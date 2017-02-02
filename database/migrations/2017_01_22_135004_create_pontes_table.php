@@ -21,6 +21,7 @@ class CreatePontesTable extends Migration
             $table->decimal('lng_inicio', 10,7)->nullable();
             $table->decimal('lat_fim', 10,7)->nullable();
             $table->decimal('lng_fim', 10,7)->nullable();
+            $table->string('imagem')->nullable();
             $table->string('tipo_obstaculo')->nullable();
             $table->string('local_obstaculo')->nullable();
             $table->string('estado_ponte');
@@ -28,8 +29,8 @@ class CreatePontesTable extends Migration
             $table->integer('distrito_id')->unsigned();
             $table->foreign('distrito_id')->references('id')->on('distritos');
 
-            $table->integer('tipo_de_ponte_id')->unsigned();
-            $table->foreign('tipo_de_ponte_id')->references('id')->on('tipo_de_pontes');
+            $table->integer('tipo_id')->unsigned();
+            $table->foreign('tipo_id')->references('id')->on('tipos');
 
             $table->integer('estrada_id')->unsigned();
             $table->foreign('estrada_id')->references('id')->on('estradas');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ponte;
 use Illuminate\Http\Request;
 
 class PonteController extends Controller
@@ -13,8 +14,8 @@ class PonteController extends Controller
      */
     public function index()
     {
-
-
+       $pontes = Ponte::all();
+       return view('pontes.index', compact('pontes'));
 
     }
 

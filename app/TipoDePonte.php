@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoDePonte extends Model
 {
-    protected $table = 'tipo_de_pontes';
+    protected $table = 'tipos';
 
     protected $fillable = [
-        'designacao_tipo_de_ponte',
-        'descricao_tipo_de_ponte'
+        'designacao_tipo',
+        'descricao_tipo'
     ];
 
     public function pontes()

@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('titulo')</title>
+    <title>@yield('title')</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="csrf-token" content="<?= csrf_token() ?>" />
     
@@ -63,58 +63,55 @@
     <!-- CSS Libs -->
 
     <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/dataTables.bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/css/select2.min.css">
     <link rel="stylesheet" type="text/css" href="/css/toastr.min.css">
-    
     @yield('css')
 </head>
 <body>
    <ul class="side-nav" id="mobile-demo">
-    <li>
-                <div class="userView">
-                    <div class="background">
-                        <img src="/img/login-background-4.jpg">
-                    </div>
-                    <a href="#!user"><img class="circle" src="/img/user-logo.png"></a>
-                    <a href="#!name"><span class="white-text name">John Doe</span></a>
-                    <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-                </div>
-            </li>
-            <li class="pesquisar">
-                <nav class="white">
-                <div class="nav-wrapper">
-                    <form>
-                        <div class="input-field">
-                            <input id="search-side-nav" type="search" required>
-                            <label class="label-icon" for="search-side-nav"><i class="material-icons black-text">search</i></label>
-                            <i class="material-icons">close</i>
-                        </div>
-                    </form>
-                </div>
-                </nav>
-            </li>
-            <li><a href="{{url('/home')}}" class="waves-effect black-text"><i class="material-icons">home</i>Inicio</a></li>
-            <li>
-                <div class="divider"></div>
-            </li>
-            <li><a class="waves-effect black-text" href="#" ><i class="fa fa-road"></i>Pontes</a></li>
-             <li>
-                <div class="divider"></div>
-            </li>
-            <li><a class="waves-effect black-text" href="#"><i class="material-icons">add</i>Registar Despacho</a></li>
-             <li>
-                <div class="divider"></div>
-            </li>
-            <li><a class="waves-effect black-text" href="#"><i class="material-icons">work</i>Corporate</a></li
-            <li>
-                <div class="divider"></div>
-            </li>
-            <li><a href="#" class="waves-effect black-text"><i class="material-icons">account_circle</i>Utilizadores</a></li>
-             <li>
-                <div class="divider"></div>
-            </li>
+       <li class="user-area">
+           <div class="userView">
+               <div class="background">
+                   <img class="responsive-img" style="" src="/img/ponte-ane.jpg">
+               </div>
+               <a href="#!user"><i class="material-icons large black-text">account_circle</i></a>
+               <a href="#!name"><span class="name blue-text">John Doe</span></a>
+               <a href="#!email"><span class="email blue-text">jdandturk@gmail.com</span></a>
+           </div>
+       </li>
+       <li class="pesquisar">
+           <nav class="white">
+               <div class="nav-wrapper">
+                   <form>
+                       <div class="input-field">
+                           <input id="search" type="search" required>
+                           <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
+                           <i class="material-icons">close</i>
+                       </div>
+                   </form>
+               </div>
+           </nav>
+       </li>
+       <li><a href="{{url('/home')}}" class="waves-effect black-text"><i class="material-icons">home</i>Inicio</a></li>
+       <li>
+           <div class="divider"></div>
+       </li>
+       <li><a class="waves-effect black-text" href="#" ><i class="fa fa-road fa-2x"></i>Pontes</a></li>
+       <li>
+           <div class="divider"></div>
+       </li>
+       <li><a class="waves-effect black-text" href="#"><i class="material-icons">add</i>Registar Ponte</a></li>
+       <li>
+           <div class="divider"></div>
+       </li>
+       <li><a class="waves-effect black-text" href="#"><i class="material-icons">work</i>Corporate</a></li
+       <li>
+           <div class="divider"></div>
+       </li>
+       <li><a href="#" class="waves-effect black-text"><i class="material-icons">account_circle</i>Utilizadores</a></li>
+       <li>
+           <div class="divider"></div>
+       </li>
 </ul>
 
 <ul id="dropdown-user" class="dropdown-content" style="margin-top: 65px;">
@@ -174,7 +171,7 @@
              <li>
                 <div class="divider"></div>
             </li>
-            <li><a class="waves-effect black-text" href="#"><i class="material-icons">add</i>Registar Despacho</a></li>
+            <li><a class="waves-effect black-text" href="#"><i class="material-icons">add</i>Registar Ponte</a></li>
              <li>
                 <div class="divider"></div>
             </li>
@@ -194,10 +191,10 @@
     </div>
 </div>
 
-<script type="text/javascript" src="https://go-expresso-gc.herokuapp.com/js/jszip.min.js"></script>
-<script type="text/javascript" src="https://go-expresso-gc.herokuapp.com/js/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://go-expresso-gc.herokuapp.com/js/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://go-expresso-gc.herokuapp.com/js/custom.js"></script>
+<script type="text/javascript" src="/js/jszip.min.js"></script>
+<script type="text/javascript" src="/js/pdfmake.min.js"></script>
+<script type="text/javascript" src="/js/vfs_fonts.js"></script>
+<script type="text/javascript" src="/js/custom.js"></script>
 @yield('js')
 
 <footer class="page-footer grey darken-4">

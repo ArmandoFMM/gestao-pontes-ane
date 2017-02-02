@@ -13,10 +13,10 @@ class CreateTipoDePontesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_de_pontes', function (Blueprint $table) {
+        Schema::create('tipos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('designacao_tipo_de_ponte')->unique();
-            $table->text('descricao_tipo_de_ponte');
+            $table->string('designacao_tipo')->unique();
+            $table->text('descricao_tipo');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTipoDePontesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_de_pontes');
+        Schema::dropIfExists('tipos');
     }
 }

@@ -19,7 +19,8 @@ class Ponte extends Model
         'loc_obstaculo',
         'estado_ponte',
         'distrito_id',
-        'estrada_id'
+        'estrada_id',
+        'tipo_id'
     ];
 
     public function imagens()
@@ -37,7 +38,7 @@ class Ponte extends Model
         return $this->belongsTo('App\Distrito');
     }
 
-    public function tipoDePonte()
+    public function tipo()
     {
         return $this->belongsTo('App\TipoDePonte');
     }

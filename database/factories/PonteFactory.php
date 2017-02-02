@@ -23,7 +23,7 @@ $factory->define(App\Ponte::class, function (Faker\Generator $faker) {
         'tipo_obstaculo'=> $faker->randomElement(['Rio','Corrente']),
         'local_obstaculo' => $faker->randomElement(['Por Baixo']),
         'estado_ponte' => 'Bom',
-        'tipo_de_ponte_id' => $faker->numberBetween(1,4),
+        'tipo_id' => $faker->numberBetween(1,4),
         'estrada_id' => $faker->numberBetween(1,4)
     ];
 });
