@@ -62,4 +62,59 @@ $(document).ready(function() {
     });
 
     $('select').material_select();
+
+    $('.modal').modal();
+
+
+    $('.delete').click(function() {
+        swal({
+            title: 'Tem a certeza?',
+            text: 'Não será possivel reverter esta accão',
+            type: 'warning',
+            confirmButtonColor: '#d33',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, Eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then(function() {
+            swal('Eliminado', 'Registo Eliminado com sucesso', 'success')
+        });
+    });
+
+    // Listagem por grid
+    $('#lista-grid').click(function() {
+
+
+        $('#lista-grid').removeClass('btn-flat');
+        $('#lista-grid').addClass('btn');
+
+        $('#lista-tabela').removeClass('btn')
+        $('#lista-tabela').addClass('btn-flat');
+
+        $('#dt-table_wrapper').fadeOut();
+
+        $('#pontes-grid').fadeIn();
+        $('#pontes-grid').removeClass('hide');
+
+    });
+
+    // Listagem por tabela
+    $('#lista-tabela').click(function() {
+
+        $('#lista-tabela').removeClass('btn-flat')
+        $('#lista-tabela').addClass('btn');
+
+        $('#lista-grid').removeClass('btn')
+        $('#lista-grid').addClass('btn-flat');
+
+        $('#dt-table_wrapper').fadeIn();
+
+        $('#pontes-grid').fadeOut();
+
+
+    });
+
+
+
+
+
 });

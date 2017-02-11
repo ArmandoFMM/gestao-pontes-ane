@@ -20,6 +20,7 @@ class Ponte extends Model
         'estado_ponte',
         'distrito_id',
         'estrada_id',
+        'imagem',
         'tipo_id'
     ];
 

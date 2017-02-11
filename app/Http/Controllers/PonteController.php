@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Ponte;
+use App\Distrito;
+use App\TipoDePonte;
+use App\Estrada;
 use Illuminate\Http\Request;
+use Session;
 
 class PonteController extends Controller
 {
@@ -26,7 +30,10 @@ class PonteController extends Controller
      */
     public function create()
     {
-        //
+        $distritos = Distrito::all();
+        $tipos = TipoDePonte::all();
+        $estradas = Estrada::all();
+        return view('pontes.create', compact('distritos','tipos','estradas'));
     }
 
     /**
@@ -37,7 +44,14 @@ class PonteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $path = $request->file('img')->store('pontes-avatars','public');
+        $request->request->add(['imagem' => $path]);
+        Ponte::create($request->all());
+
+        Session::flash('message', 'Ponte Registada com sucesso');
+        return redirect()->route('pontes.index');
+
+
     }
 
     /**
@@ -48,7 +62,9 @@ class PonteController extends Controller
      */
     public function show($id)
     {
-        //
+        $ponte = Ponte::find($id);
+        return view('pontes.show', compact('ponte'));     
+        
     }
 
     /**

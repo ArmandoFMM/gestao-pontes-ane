@@ -23,9 +23,7 @@ class PontesTableSeeder extends Seeder
 
                     factory(App\Distrito::class)->create(['provincia_id' => $provincia->id])->each(
                         function ($distrito){
-                            for ($i = 0; $i < 4; $i++) {
-                                $distrito->pontes()->save(factory(App\Ponte::class)->make());
-                            }
+                            
                 });
 
                     

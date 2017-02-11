@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('title')</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="csrf-token" content="<?= csrf_token() ?>" />
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -45,6 +47,14 @@
     <!--Import jQuery before any js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
+     <!--Load the AJAX API For Google Charts-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- Maps API Key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO_6budHTHZRsH6Et-tFRfmwt8DedPhHc"
+    async defer></script>
+
+
     <!--Import datatable js-->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     <script type"text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
@@ -59,9 +69,11 @@
 
     <link rel="shortcut icon" href="/img/favicon.png">
 
+    <!-- SweetAlert -->
+    <link href="/css/sweetalert2.min.css" rel="stylesheet">
+    <script src="/js/sweetalert2.min.js"></script>
     
     <!-- CSS Libs -->
-
     <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/css/select2.min.css">
     <link rel="stylesheet" type="text/css" href="/css/toastr.min.css">
@@ -96,15 +108,14 @@
        <li>
            <div class="divider"></div>
        </li>
-       <li><a class="waves-effect black-text" href="#" ><i class="fa fa-road fa-2x"></i>Pontes</a></li>
+       <li><a class="waves-effect black-text" href="{{route('pontes.index')}}" ><i class="fa fa-road fa-2x"></i>Pontes</a></li>
        <li>
            <div class="divider"></div>
        </li>
-       <li><a class="waves-effect black-text" href="#"><i class="material-icons">add</i>Registar Ponte</a></li>
+       <li><a class="waves-effect black-text" href="{{route('pontes.create')}}"><i class="material-icons">add</i>Registar Ponte</a></li>
        <li>
            <div class="divider"></div>
        </li>
-       <li><a class="waves-effect black-text" href="#"><i class="material-icons">work</i>Corporate</a></li
        <li>
            <div class="divider"></div>
        </li>
@@ -167,15 +178,14 @@
             <li>
                 <div class="divider"></div>
             </li>
-            <li><a class="waves-effect black-text" href="#" ><i class="fa fa-road fa-2x"></i>Pontes</a></li>
+            <li><a class="waves-effect black-text" href="{{route('pontes.index')}}" ><i class="fa fa-road fa-2x"></i>Pontes</a></li>
              <li>
                 <div class="divider"></div>
             </li>
-            <li><a class="waves-effect black-text" href="#"><i class="material-icons">add</i>Registar Ponte</a></li>
+            <li><a class="waves-effect black-text" href="{{route('pontes.create')}}"><i class="material-icons">add</i>Registar Ponte</a></li>
              <li>
                 <div class="divider"></div>
             </li>
-            <li><a class="waves-effect black-text" href="#"><i class="material-icons">work</i>Corporate</a></li
             <li>
                 <div class="divider"></div>
             </li>
@@ -195,8 +205,6 @@
 <script type="text/javascript" src="/js/pdfmake.min.js"></script>
 <script type="text/javascript" src="/js/vfs_fonts.js"></script>
 <script type="text/javascript" src="/js/custom.js"></script>
-@yield('js')
-
 <footer class="page-footer grey darken-4">
     <div class="footer-copyright">
         <div class="container">
