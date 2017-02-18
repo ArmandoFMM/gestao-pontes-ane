@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title')</title>
+    <title>{{ config('app.name', 'SGP8') }} - @yield('title')</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
     <!-- CSRF Token -->
@@ -38,7 +38,7 @@
     <!--  Compiled and minified DataTable CSS-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" type='text/css'>
     
-    <!-- Compiled and minifie d CSS -->
+    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <!-- Custom Css -->    
     <link rel="stylesheet" href="/css/style.css" type='text/css'>
@@ -65,7 +65,6 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 
-    <!--Let browser know website is optimized for mobile-->
 
     <link rel="shortcut icon" href="/img/favicon.png">
 
@@ -125,10 +124,9 @@
        </li>
 </ul>
 
-<ul id="dropdown-user" class="dropdown-content" style="margin-top: 65px;">
+<ul id="dropdown-user" class="dropdown-content">
   <li><a href="#!">one</a></li>
   <li><a href="#!">two</a></li>
-  <li class="divider"></li>
   <li><a href="#!">three</a></li>
 </ul>
 
@@ -197,6 +195,23 @@
     </div>
 
     <div class="col s12 m8 l9 conteudo">
+
+        <div class="preloader-background">
+            <div class="preloader-wrapper big active">
+              <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                  <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         @yield('content')
     </div>
 </div>
@@ -204,12 +219,12 @@
 <script type="text/javascript" src="/js/jszip.min.js"></script>
 <script type="text/javascript" src="/js/pdfmake.min.js"></script>
 <script type="text/javascript" src="/js/vfs_fonts.js"></script>
+<script type="text/javascript" src="/js/init.js"></script>
 <script type="text/javascript" src="/js/custom.js"></script>
 <footer class="page-footer grey darken-4">
     <div class="footer-copyright">
         <div class="container">
-            © 2017 Todos os Direitos Reservados
-            <a class="grey-text text-lighten-4 right" href="#!">ANE</a>
+            © 2017 <a class="grey-text text-lighten-4" href="#!">ANE</a> Todos os Direitos Reservados
         </div>
     </div>
 </footer>

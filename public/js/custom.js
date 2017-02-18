@@ -26,7 +26,7 @@ $(document).ready(function() {
         "language": {
             "sProcessing": "A processar...",
             "sLengthMenu": "Mostrar _MENU_ registos",
-            "sZeroRecords": "Não foram encontrados resultados",
+            "sZeroRecords": "Não foram encontrados registos",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
             "sInfoEmpty": "Mostrando de 0 até 0 de 0 registos",
             "sInfoFiltered": "(filtrado de _MAX_ registos no total)",

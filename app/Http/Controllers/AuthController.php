@@ -2,24 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Ponte;
-use App\Distrito;
-use App\TipoDePonte;
-use App\Estrada;
 use Illuminate\Http\Request;
-use Session;
 
-class PonteController extends Controller
+class AuthController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $pontes = Ponte::all();
-       return view('pontes.index', compact('pontes'));
+        return $request->user();
 
     }
 
@@ -30,10 +24,7 @@ class PonteController extends Controller
      */
     public function create()
     {
-        $distritos = Distrito::all();
-        $tipos = TipoDePonte::all();
-        $estradas = Estrada::all();
-        return view('pontes.create', compact('distritos','tipos','estradas'));
+        //
     }
 
     /**
@@ -44,14 +35,7 @@ class PonteController extends Controller
      */
     public function store(Request $request)
     {
-        $path = $request->file('img')->store('pontes-avatars','public');
-        $request->request->add(['imagem' => $path]);
-        Ponte::create($request->all());
-
-        Session::flash('message', 'Ponte Registada com sucesso');
-        return redirect()->route('pontes.index');
-
-
+        //
     }
 
     /**
@@ -62,9 +46,7 @@ class PonteController extends Controller
      */
     public function show($id)
     {
-        $ponte = Ponte::find($id);
-        return view('pontes.show', compact('ponte'));     
-        
+        //
     }
 
     /**
@@ -101,9 +83,14 @@ class PonteController extends Controller
         //
     }
 
-    public function todasPontes(){
+     public function auth(Request $request)
+    {
+        if(\Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            $accessToken = \Auth::user()->createToken('user', []);
+            $user = \Auth::user();
+            return response()->json(compact('accessToken','user'));
+        }
 
-        $pontes = Ponte::all();
-        return response()->json($pontes->toArray());
-    }
+    return response()->json(['error' => 'Password ou email Inválido']);
+}
 }

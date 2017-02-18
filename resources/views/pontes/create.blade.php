@@ -44,16 +44,6 @@
     text-align: center;
     position: relative;
 }
-
-.btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
     </style>
 @endsection
 
@@ -64,15 +54,15 @@
 <div class="stepwizard">
     <div class="panel-passos">
         <div class="passo">
-            <a href="#passo-1" type="button" class="btn btn-primary btn-circle"><i class="material-icons">description</i></a>
+            <a href="#passo-1" type="button" class="btn-floating waves-effect waves-light"><i class="material-icons">description</i></a>
             <p>Descricão</p>
         </div>
         <div class="passo">
-            <a href="#passo-2" type="button" class="btn btn-default btn-circle" disabled="disabled"><i class="material-icons">location_on</i></a>
+            <a href="#passo-2" type="button" class="btn-floating waves-effect waves-light" disabled><i class="material-icons">location_on</i></a>
             <p>Localizacão</p>
         </div>
         <div class="passo">
-            <a href="#passo-3" type="button" class="btn btn-default btn-circle" disabled="disabled"><i class="material-icons">perm_media</i></a>
+            <a href="#passo-3" type="button" class="btn-floating waves-effect waves-light" disabled><i class="material-icons">perm_media</i></a>
             <p>Media</p>
         </div>
     </div>
@@ -81,7 +71,7 @@
     <form role="form" method="Post" class="col s12" action="{{route('pontes.store')}}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row setup-content" id="passo-1">
-                    <h5 class="center-align">Dados de Ponte</h5>
+                    <h5 class="center-align">Dados da Ponte</h5>
                     <div class="input-field col s12 m6">
                         <input id="nome_ponte" name="nome_ponte"  maxlength="100"  type="text" required/>
                         <label for="nome_ponte">Nome da Ponte</label>
@@ -127,8 +117,8 @@
                         <label>Estado da Ponte</label>
                     </div>
 
-                    <div class="col s12">
-                        <button class="btn btn-primary nextBtn right-align" type="button" >Seguinte</button>
+                    <div class="col s12 right">
+                        <button class="btn btn-primary nextBtn waves-effect waves-light right" type="button">Seguinte<i class="material-icons right">skip_next</i></button>
                     </div>
         </div>
 
@@ -177,14 +167,17 @@
                         <label>Estrada</label>
                     </div>
 
-                    <div class="col s12">
-                        <button class="btn btn-primary nextBtn right-align" type="button" >Next</button>
-                    </div>    
+                    <div class="col s6  left">
+                        <button class="btn btn-primary prevBtn black waves-effect waves-light" type="button"><i class="material-icons left">skip_previous</i>anterior</button>    
+                    </div> 
+                    <div class="col s6 right">
+                        <button class="btn btn-primary nextBtn waves-effect waves-light right" type="button">seguinte<i class="material-icons right">skip_next</i></button>
+                    </div>  
         </div>
 
 
         <div class="row setup-content" id="passo-3">
-                    <h5 class="center-align"> Passo 3</h5>
+                    <h5 class="center-align"> Imagens da Ponte</h5>
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>Imagem Principal</span>
@@ -194,10 +187,52 @@
                             <input class="file-path validate" type="text">
                         </div>
                     </div>
-                    
 
-                    <div class="col s12">
-                        <button class="btn btn-primary right-align" type="submit">Gravar</button>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Imagem Sul</span>
+                            <input type="file" name="img-sul" accept="image/*">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Imagem Norte</span>
+                            <input type="file" name="img-sul" accept="image/*">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Imagem Este</span>
+                            <input type="file" name="img-sul" accept="image/*">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Imagem Oeste</span>
+                            <input type="file" name="img-sul" accept="image/*">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                    
+                    <div class="col s6 left">
+                        <button class="btn btn-primary prevBtn black waves-effect waves-light" type="button"><i class="material-icons left">skip_previous</i>anterior</button>    
+                    </div> 
+                    <div class="col s6 right">
+                        <button class="btn btn-primary right waves-effect waves-light" type="submit"><i class="material-icons right">send</i>Gravar</button>
                     </div>
         </div>
     </form>
@@ -215,6 +250,7 @@ $(document).ready(function () {
             allNextBtn = $('.nextBtn');
 
     allWells.hide();
+    $('#passo-1').show();
 
     navListItems.click(function (e) {
         e.preventDefault();
@@ -222,15 +258,13 @@ $(document).ready(function () {
                 $item = $(this);
 
         if (!$item.hasClass('disabled')) {
-            navListItems.removeClass('btn-primary').addClass('btn-default');
-            $item.addClass('btn-primary');
             allWells.hide();
             $target.show();
             $target.find('input:eq(0)').focus();
         }
     });
 
-    allNextBtn.click(function(){
+    $('.nextBtn').click(function(){
         var curStep = $(this).closest(".setup-content"),
             curStepBtn = curStep.attr("id"),
             nextStepWizard = $('div.panel-passos div a[href="#' + curStepBtn + '"]').parent().next().children("a"),

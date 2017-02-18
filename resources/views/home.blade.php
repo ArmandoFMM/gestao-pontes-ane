@@ -24,6 +24,7 @@
         </div>
     </div>
     <!-- Pontes em bom estado -->
+    @if(count($pontes_estado_bom) > 0 )
     <div class="col s12 m6 l4">
         <div class="card sticky-action green accent-2">
             <div class="card-image waves-effect waves-block waves-light">
@@ -32,6 +33,7 @@
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4"><b>{{round((count($pontes_estado_bom)/count($pontes))*100,2)}} % </b><i class="material-icons right">more_vert</i></span>
+                
                 <p><a href="#">This is a link</a></p>
             </div>
             <div class="card-reveal green accent-2">
@@ -53,34 +55,40 @@
             </div>
         </div>
     </div>
-    <div class="col s12 m6 l4">
-        <div class="card sticky-action red accent-2">
-            <div class="card-image waves-effect waves-block waves-light">
-                <p class="center-align"><span class="fa fa-exclamation-circle"></span> Pontes em Estado de ?</p>
-                <h3 class="center-align">{{count($pontes_estado_degradada)}}</h3>
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4"><b>{{round((count($pontes_estado_degradada)/count($pontes))*100,2)}} %</b><i class="material-icons right">more_vert</i></span>
-                <p><a href="#">This is a link</a></p>
-            </div>
-            <div class="card-reveal red accent-2">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <p>
-                    <ul class="collection">
-                    @foreach($pontes_estado_degradada as $ponte)
-                        <li class="collection-item avatar">
-                            <img src="/img/{{$ponte->imagem}}" alt="" class="circle">
-                            <span class="title">{{$ponte->nome_ponte}}</span>
-                            <p>{{$ponte->estrada->nome_estrada}}<br> {{$ponte->distrito->nome_distrito}}
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">visibility</i></a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </p>
+    @endif
+
+    @if(count($pontes_estado_degradada) > 0)
+        <div class="col s12 m6 l4">
+            <div class="card sticky-action red accent-2">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <p class="center-align"><span class="fa fa-exclamation-circle"></span> Pontes em Estado de ?</p>
+                    <h3 class="center-align">{{count($pontes_estado_degradada)}}</h3>
+                </div>
+                <div class="card-content">
+                    
+                    <span class="card-title activator grey-text text-darken-4"><b>{{round((count($pontes_estado_degradada)/count($pontes))*100,2)}} %</b><i class="material-icons right">more_vert</i></span>
+                
+                    <p><a href="#">This is a link</a></p>
+                </div>
+                <div class="card-reveal red accent-2">
+                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                    <p>
+                        <ul class="collection">
+                        @foreach($pontes_estado_degradada as $ponte)
+                            <li class="collection-item avatar">
+                                <img src="/img/{{$ponte->imagem}}" alt="" class="circle">
+                                <span class="title">{{$ponte->nome_ponte}}</span>
+                                <p>{{$ponte->estrada->nome_estrada}}<br> {{$ponte->distrito->nome_distrito}}
+                                </p>
+                                <a href="#!" class="secondary-content"><i class="material-icons">visibility</i></a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
+      @endif
 </div>
 
 <!-- Graficos -->

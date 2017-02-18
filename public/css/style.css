@@ -112,9 +112,27 @@ nav .brand-logo img {
     margin: 2px 0 0 15px;
 }
 
+.preloader-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#dropdown-user {
+    margin-top: 65px;
+}
+
 @media only screen and (min-width: 993px) {
     .row .col.conteudo,
-    .page-footer {
+    .page-footer,
+    .preloader-background {
         width: 75%;
         margin-left: 25%;
     }
@@ -139,5 +157,11 @@ nav .brand-logo img {
     #area-search {
         float: initial;
         margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar-fixed .brand-logo img {
+        height: 50px;
     }
 }
