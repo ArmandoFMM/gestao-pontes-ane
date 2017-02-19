@@ -25,7 +25,6 @@ Route::post('auth', 'AuthController@auth');
 
 Route::group(['middleware' => 'auth:api'], function(){
 
-  Route::resource('user', 'AuthController@index');
   Route::get('todas-pontes','PonteController@todasPontes');
 
 

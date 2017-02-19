@@ -1,10 +1,19 @@
-@extends('layouts.master') @section('title') Pontes @endsection @section('css')
+@extends('layouts.master') 
+
+
+@section('title')
+Pontes
+@endsection
+
+@section('css')
 <style>
     .panels .card {
         height: 250px;
     }
 </style>
-@endsection @section('content')
+@endsection
+
+@section('content')
 <div class="row panels">
     <!-- Total de Pontes -->
     <div class="col s12 m6 l4">
@@ -42,7 +51,7 @@
                 <ul class="collection">
                     @foreach($pontes_estado_bom as $ponte)
                         <li class="collection-item avatar">
-                            <img src="/img/{{$ponte->imagem}}" alt="" class="circle">
+                            <img src="{{asset('storage/'.$ponte->imagem)}}" alt="" class="circle">
                             <span class="title">{{$ponte->nome_ponte}}</span>
                             <p>{{$ponte->estrada->nome_estrada}}<br> {{$ponte->distrito->nome_distrito}}
                             </p>
@@ -76,7 +85,7 @@
                         <ul class="collection">
                         @foreach($pontes_estado_degradada as $ponte)
                             <li class="collection-item avatar">
-                                <img src="/img/{{$ponte->imagem}}" alt="" class="circle">
+                                <img src="{{asset('storage/'.$ponte->imagem)}}" alt="" class="circle">
                                 <span class="title">{{$ponte->nome_ponte}}</span>
                                 <p>{{$ponte->estrada->nome_estrada}}<br> {{$ponte->distrito->nome_distrito}}
                                 </p>
@@ -104,7 +113,20 @@
         <div id="charts"></div>
     </div>
 </div>
-@endsection @section('js')
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">add</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating teal"><i class="material-icons"></i>Ponte</a></li>
+      <li><a class="btn-floating yellow darken-1"><i class="material-icons">account_circle</i></a></li>
+    </ul>
+  </div>
+@endsection 
+
+
+@section('js')
 <script type="text/javascript">
 $(document).ready(function() {
 

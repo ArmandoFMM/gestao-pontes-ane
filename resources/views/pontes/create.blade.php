@@ -248,6 +248,7 @@ $(document).ready(function () {
     var navListItems = $('div.panel-passos div a'),
             allWells = $('.setup-content'),
             allNextBtn = $('.nextBtn');
+            allPrevBtn = $('.prevbtn');
 
     allWells.hide();
     $('#passo-1').show();
@@ -284,6 +285,16 @@ $(document).ready(function () {
     });
 
     $('div.panel-passos div a.btn-primary').trigger('click');
+
+    $('.prevBtn').click(function(){
+        var curStep = $(this).closest(".setup-content"),
+            curStepBtn = curStep.attr("id"),
+            nextStepWizard = $('div.panel-passos div a[href="#' + curStepBtn + '"]').parent().prev().children("a"),
+            curInputs = curStep.find("input[type='text'],select"),
+            isValid = true;
+
+            nextStepWizard.trigger('click');
+    });
 });
 </script>
 @endsection

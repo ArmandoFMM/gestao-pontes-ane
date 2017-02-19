@@ -79,6 +79,22 @@
     @yield('css')
 </head>
 <body>
+
+<ul id="dropdown-user" class="dropdown-content" style="margin-top: 65px;">
+  <li><a href="{{ route('logout') }}" 
+                  onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+            Logout
+      </a>
+
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          {{ csrf_field() }}
+      </form>
+  </li>
+  <li><a href="#!">Perfil</a></li>
+  <li ><a href="#!">Configuções</a></li>
+</ul>
+
    <ul class="side-nav" id="mobile-demo">
        <li class="user-area">
            <div class="userView">
@@ -86,8 +102,8 @@
                    <img class="responsive-img" style="" src="/img/ponte-ane.jpg">
                </div>
                <a href="#!user"><i class="material-icons large black-text">account_circle</i></a>
-               <a href="#!name"><span class="name blue-text">John Doe</span></a>
-               <a href="#!email"><span class="email blue-text">jdandturk@gmail.com</span></a>
+               <a href="#!name"><span class="name blue-text">{{Auth::user()->name}}</span></a>
+               <a href="#!email"><span class="email blue-text">{{Auth::user()->email}}</span></a>
            </div>
        </li>
        <li class="pesquisar">
@@ -124,12 +140,6 @@
        </li>
 </ul>
 
-<ul id="dropdown-user" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li><a href="#!">three</a></li>
-</ul>
-
 <div class="navbar-fixed">
     <nav class="nav  grey darken-4">
         <div class="nav-wrapper">
@@ -138,7 +148,7 @@
             </a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown-user"><i class="medium material-icons left">account_circle</i>Username</a></li>
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown-user"><i class="medium material-icons left">account_circle</i>{{Auth::user()->name}}<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
 
         </div>
@@ -155,8 +165,8 @@
                         <img class="responsive-img" style="" src="/img/ponte-ane.jpg">
                     </div>
                     <a href="#!user"><i class="material-icons large black-text">account_circle</i></a>
-                    <a href="#!name"><span class="name blue-text">John Doe</span></a>
-                    <a href="#!email"><span class="email blue-text">jdandturk@gmail.com</span></a>
+                    <a href="#!name"><span class="name blue-text">{{Auth::user()->name}}</span></a>
+                    <a href="#!email"><span class="email blue-text">{{Auth::user()->email}}</span></a>
                 </div>
             </li>
             <li class="pesquisar">
