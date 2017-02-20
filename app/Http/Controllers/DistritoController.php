@@ -2,26 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Ponte;
-use App\Distrito;
-use App\TipoDePonte;
-use App\Estrada;
 use Illuminate\Http\Request;
-use Session;
+use App\Distrito;
 
-class PonteController extends Controller
+class DistritoController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -29,9 +14,7 @@ class PonteController extends Controller
      */
     public function index()
     {
-       $pontes = Ponte::all();
-       return view('pontes.index', compact('pontes'));
-
+        //
     }
 
     /**
@@ -41,10 +24,7 @@ class PonteController extends Controller
      */
     public function create()
     {
-        $distritos = Distrito::all();
-        $tipos = TipoDePonte::all();
-        $estradas = Estrada::all();
-        return view('pontes.create', compact('distritos','tipos','estradas'));
+        //
     }
 
     /**
@@ -55,14 +35,7 @@ class PonteController extends Controller
      */
     public function store(Request $request)
     {
-        $path = $request->file('img')->store('pontes-avatars','public');
-        $request->request->add(['imagem' => $path]);
-        Ponte::create($request->all());
-
-        Session::flash('message', 'Ponte Registada com sucesso');
-        return redirect()->route('pontes.index');
-
-
+        //
     }
 
     /**
@@ -73,9 +46,7 @@ class PonteController extends Controller
      */
     public function show($id)
     {
-        $ponte = Ponte::find($id);
-        return view('pontes.show', compact('ponte'));     
-        
+        //
     }
 
     /**
@@ -112,10 +83,9 @@ class PonteController extends Controller
         //
     }
 
-    public function todasPontes(){
+    public function todosDistritos(){
 
-        $pontes = Ponte::all();
+        $pontes = Distrito::all();
         return response()->json($pontes->toArray());
     }
-    
 }
