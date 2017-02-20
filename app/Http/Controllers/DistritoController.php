@@ -85,7 +85,7 @@ class DistritoController extends Controller
 
     public function todosDistritos(){
 
-        $pontes = Distrito::all();
-        return response()->json($pontes->toArray());
+        $distritos = Distrito::all();
+        return response()->json($distritos->toArray());
     }
 }

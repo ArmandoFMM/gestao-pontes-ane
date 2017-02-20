@@ -25,7 +25,14 @@ Route::post('auth', 'AuthController@auth');
 
 Route::group(['middleware' => 'auth:api'], function(){
 
-  Route::get('todas-pontes','PonteController@todasPontes');
+
+    Route::get('todas-pontes','PonteController@todasPontes');
+
+    Route::get('todos-distritos','DistritoController@todosDistritos');
+
+    Route::get('todas-estradas','EstradaController@todasEstradas');
+
+    Route::get('todos-tipos','TipoDePonteController@todosTipos');
 
 
 });

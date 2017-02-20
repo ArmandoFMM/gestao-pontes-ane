@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Estrada;
 use Illuminate\Http\Request;
 
 class EstradaController extends Controller
@@ -80,5 +81,11 @@ class EstradaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function todasEstradas(){
+        $estradas = Estrada::all();
+        return response()->json($estradas->toArray());
     }
 }

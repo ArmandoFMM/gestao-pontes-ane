@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TipoDePonte;
 use Illuminate\Http\Request;
 
 class TipoDePonteController extends Controller
@@ -80,5 +81,11 @@ class TipoDePonteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function todosTipos(){
+
+        $tipos = TipoDePonte::all();
+        return response()->json($tipos->toArray());
     }
 }
