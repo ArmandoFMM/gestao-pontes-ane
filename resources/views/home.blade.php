@@ -2,7 +2,7 @@
 
 
 @section('title')
-Pontes
+Dashboard
 @endsection
 
 @section('css')
@@ -46,7 +46,7 @@ Pontes
                 <p><a href="#">This is a link</a></p>
             </div>
             <div class="card-reveal green accent-2">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                <span class="card-title grey-text text-darken-4">Pontes em Bom Estado<i class="material-icons right">close</i></span>
                 <p>
                 <ul class="collection">
                     @foreach($pontes_estado_bom as $ponte)
@@ -80,7 +80,7 @@ Pontes
                     <p><a href="#">This is a link</a></p>
                 </div>
                 <div class="card-reveal red accent-2">
-                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                    <span class="card-title grey-text text-darken-4">Pontes em Estado de ?<i class="material-icons right">close</i></span>
                     <p>
                         <ul class="collection">
                         @foreach($pontes_estado_degradada as $ponte)

@@ -1,5 +1,9 @@
 @extends('layouts.guest')
 
+@section('title')
+Login
+@endsection
+
 @section('content')
  <div class="row">
         <div class="col s12 m8 offset-m2">

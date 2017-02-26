@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Pontes
+   Listagem de Pontes
 @endsection
 
 @section('css')
@@ -12,7 +12,7 @@
         height: 52px;
     }
     .card img {
-        height: 200px;
+        max-height: 300px;
     }
     </style>
 @endsection

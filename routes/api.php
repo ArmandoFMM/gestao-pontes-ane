@@ -34,5 +34,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 
     Route::get('todos-tipos','TipoDePonteController@todosTipos');
 
+    Route::post('registar-ponte','PonteController@registar');
+
 
 });

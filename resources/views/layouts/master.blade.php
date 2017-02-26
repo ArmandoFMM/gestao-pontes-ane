@@ -12,13 +12,13 @@
     
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="img/android-desktop.png">
+    <link rel="icon" sizes="192x192" href="img/logo-ane.png">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <link rel="apple-touch-icon-precomposed" href="img/ios-desktop.png">
+    <meta name="apple-mobile-web-app-title" content="Sistema de Gestão de Pontes">
+    <link rel="apple-touch-icon-precomposed" href="img/logo-ane.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="img/touch/ms-touch-icon-144x144-precomposed.png">

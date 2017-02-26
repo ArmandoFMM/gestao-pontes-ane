@@ -55,8 +55,11 @@ class PonteController extends Controller
      */
     public function store(Request $request)
     {
-        $path = $request->file('img')->store('pontes-avatars','public');
-        $request->request->add(['imagem' => $path]);
+        if($request->file('img')) {
+            $path = $request->file('img')->store('pontes-avatars', 'public');
+            $request->request->add(['imagem' => $path]);
+        }
+
         Ponte::create($request->all());
 
         Session::flash('message', 'Ponte Registada com sucesso');
@@ -114,8 +117,14 @@ class PonteController extends Controller
 
     public function todasPontes(){
 
-        $pontes = Ponte::all();
+        $pontes = Ponte::with('tipo')->with('distrito.provincia')->with('estrada')->get();
         return response()->json($pontes->toArray());
     }
-    
+
+
+    public  function  registar(Request $request){
+
+        Ponte::create($request->all());
+        return response()->json(["msg"=>"Ponte Registada com sucesso"]);
+    }
 }

@@ -16,7 +16,7 @@ class Ponte extends Model
         'lat_fim',
         'lng_fim',
         'tipo_obstaculo',
-        'loc_obstaculo',
+        'local_obstaculo',
         'estado_ponte',
         'distrito_id',
         'estrada_id',
