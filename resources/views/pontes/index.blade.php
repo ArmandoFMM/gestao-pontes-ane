@@ -92,7 +92,11 @@
             <div class="col s12 m6 l4">
                 <div class="card small z-depth-5">
                     <div class="card-image waves-effect waves-block waves-light">
+                    @if($ponte->imagem)
                     <img class="activator" src="{{asset('storage/'.$ponte->imagem)}}">
+                        @else
+                            <img class="activator" src="/img/no-image.jpg">
+                        @endif
                     </div>                    
                     <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">
