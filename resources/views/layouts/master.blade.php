@@ -9,7 +9,7 @@
     
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" sizes="192x192" href="img/logo-ane.png">
@@ -148,6 +148,7 @@
             </a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
+                <li><a class="dropdown-button" href="#!"><i class="material-icons">notifications</i></a></li>
                 <li><a class="dropdown-button" href="#!" data-activates="dropdown-user"><i class="medium material-icons left">account_circle</i>{{Auth::user()->name}}<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
 

@@ -15,7 +15,7 @@
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <meta name="apple-mobile-web-app-title" content="Material Design">
     <link rel="apple-touch-icon-precomposed" href="/img/logo-ane.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
