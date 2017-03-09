@@ -6,8 +6,10 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "jrm2k6/cloudder": "0.4.*",
         "laravel/framework": "5.3.*",
-        "laravel/passport": "~1.0"
+        "laravel/passport": "~1.0",
+        "league/flysystem-aws-s3-v3": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -39,8 +41,7 @@
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize",
-            "php artisan passport:keys",
-            "php artisan storage:link"
+            "php artisan passport:keys"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",

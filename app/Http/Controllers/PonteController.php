@@ -8,6 +8,7 @@ use App\TipoDePonte;
 use App\Estrada;
 use Illuminate\Http\Request;
 use Session;
+use Cloudder;
 
 class PonteController extends Controller
 {
@@ -56,11 +57,14 @@ class PonteController extends Controller
     public function store(Request $request)
     {
         if($request->file('img')) {
-            $path = $request->file('img')->store('pontes-avatars', 'public');
-            $request->request->add(['imagem' => $path]);
+            $request->request->add(['imagem' => 'pontes-img']);
+            $ponte = Ponte::create($request->all());        
+            Cloudder::upload($request->file('img'),'pontes-img/'.$ponte->id);
+    
+        } else{
+            Ponte::create($request->all()); 
         }
 
-        Ponte::create($request->all());
 
         Session::flash('message', 'Ponte Registada com sucesso');
         return redirect()->route('pontes.index');
@@ -128,3 +132,4 @@ class PonteController extends Controller
         return response()->json(["msg"=>"Ponte Registada com sucesso"]);
     }
 }
+ 

@@ -69,7 +69,7 @@
                 <td class="">{{$ponte->nome_ponte}}</td>
                 <td>{{$ponte->ano_construcao}}</td>
                 <td class="">
-                 <img src="{{asset('storage/'.$ponte->imagem)}}" alt="" class="circle">
+                 <img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}" alt="" class="circle">
                 </td>
                 <td class="">{{$ponte->tipo->designacao_tipo}}</td>
                 <td>{{$ponte->estrada->nome_estrada}}</td>
@@ -89,11 +89,11 @@
         <div class="row hide" id="pontes-grid">
         
         @foreach($pontes as $ponte)
-            <div class="col s12 m6 l4">
+            <div class="col s12 m6">
                 <div class="card small z-depth-5">
                     <div class="card-image waves-effect waves-block waves-light">
                     @if($ponte->imagem)
-                    <img class="activator" src="{{asset('storage/'.$ponte->imagem)}}">
+                    <img class="activator" src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}">
                         @else
                             <img class="activator" src="/img/no-image.jpg">
                         @endif
@@ -131,7 +131,7 @@
             <div class="modal-content">
                 <div class="card small">
                 <div class="card-image">
-                    <img src="{{asset('storage/'.$ponte->imagem)}}">
+                    <img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}">
                     <span class="card-title">Ponte {{$ponte->nome_ponte}}</span>
                 </div>
                 <div class="card-tabs">

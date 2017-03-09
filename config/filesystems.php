@@ -56,8 +56,8 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'your-key',
-            'secret' => 'your-secret',
+            'key' => 'AKIAI6V2SHE5MHQX6AQA',
+            'secret' => 'H+t5fk14FgPXIFrv0iJupe2e0IXgofPiRfdslUR9',
             'region' => 'your-region',
             'bucket' => 'your-bucket',
         ],
