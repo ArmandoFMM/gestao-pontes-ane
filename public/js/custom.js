@@ -50,7 +50,7 @@ $(document).ready(function() {
         .appendTo('#controlPanel');
 
 
-    $('#pesquisar-entregas').on('keyup', function() {
+    $('#pesquisar').on('keyup', function() {
         table.search(this.value).draw();
     });
 

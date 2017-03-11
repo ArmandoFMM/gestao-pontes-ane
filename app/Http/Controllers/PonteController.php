@@ -128,8 +128,17 @@ class PonteController extends Controller
 
     public  function  registar(Request $request){
 
-        Ponte::create($request->all());
+        $ponte = Ponte::create($request->all());
         return response()->json(["msg"=>"Ponte Registada com sucesso"]);
+    }
+
+
+    public function uploadPhotos(Request $request){
+
+        return response()->json($request->toArray());
+        
+        // Cloudder::upload($request->file('img'),'pontes-img/3');
+        
     }
 }
  

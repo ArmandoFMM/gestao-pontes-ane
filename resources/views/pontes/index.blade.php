@@ -34,8 +34,8 @@
 
     <div class="input-field col s12 m6" id="area-search" style="margin-top: 21px;">
         <i class="prefix material-icons">search</i>
-        <input type="text" id="pesquisar-entregas">
-        <label for="pesquisar-entregas">Filtrar</label>
+        <input type="text" id="pesquisar">
+        <label for="pesquisar">Filtrar</label>
     </div>
 
     

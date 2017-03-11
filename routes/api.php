@@ -36,5 +36,8 @@ Route::group(['middleware' => 'auth:api'], function(){
 
     Route::post('registar-ponte','PonteController@registar');
 
+    Route::post('upload','PonteController@uploadPhotos');
+    
+
 
 });
