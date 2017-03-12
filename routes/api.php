@@ -23,7 +23,6 @@ Route::get('/user', function (Request $request) {
 
 Route::post('auth', 'AuthController@auth');
 
- Route::post('upload','PonteController@uploadPhotos');
 
 Route::group(['middleware' => 'auth:api'], function(){
 
@@ -37,5 +36,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('todos-tipos','TipoDePonteController@todosTipos');
 
     Route::post('registar-ponte','PonteController@registar');
+
+    Route::post('upload','PonteController@uploadPhotos');
 
 });
