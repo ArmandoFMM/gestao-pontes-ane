@@ -130,7 +130,7 @@ class PonteController extends Controller
 
         $ponte = Ponte::create($request->all());
 
-        return response()->json(["msg"=>"Ponte Registada com sucesso","id"=>"".$ponte->id]);
+        return response()->json(["msg"=>"Ponte Registada com sucesso"]);
     }
 
 
@@ -139,7 +139,9 @@ class PonteController extends Controller
 
             
         Cloudder::upload($request->file('img'),'pontes-img/'.$request->file('img')->getClientOriginalName());
-        // $ponte = Ponte::find($request->file('img').getClientOriginalName());
+        $ponte = Ponte::find($request->file('img').getClientOriginalName());
+        $ponte->imagem = 'pontes-img/'.$ponte->id;
+        $ponte->save();
 
         return response()->json("Upload Sucessfull".$request->file('img')->getClientOriginalName());
         }
