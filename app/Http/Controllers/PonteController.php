@@ -130,7 +130,7 @@ class PonteController extends Controller
 
         $ponte = Ponte::create($request->all());
 
-        return response()->json(["msg"=>"Ponte Registada com sucesso"]);
+        return response()->json(["msg"=>"Ponte Registada com sucesso", "id"=>$ponte->id]);
     }
 
 
