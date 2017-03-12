@@ -137,7 +137,7 @@ class PonteController extends Controller
         
         Cloudder::upload($request->file('img'),'pontes-img/3');
 
-        return response()->json(["msg"=>"Upload Sucessfull"]);
+        return response()->json("Upload Sucessfull");
         
     }
 }
