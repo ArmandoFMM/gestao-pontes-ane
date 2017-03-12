@@ -139,11 +139,12 @@ class PonteController extends Controller
 
             
         Cloudder::upload($request->file('img'),'pontes-img/'.$request->file('img')->getClientOriginalName());
-        $ponte = Ponte::find($request->file('img')->getClientOriginalName());
-        $ponte->imagem = 'pontes-img/'.$ponte->id;
+        $id = pathinfo($request->file('img')->getClientOriginalName(), PATHINFO_FILENAME);
+        $ponte = Ponte::find($id);
+        $ponte->imagem = 'pontes-img/';
         $ponte->save();
 
-        return response()->json("Upload Sucessfull".$request->file('img')->getClientOriginalName());
+        return response()->json("Upload Sucessfull");
         }
         return response()->json("Erro");
         
