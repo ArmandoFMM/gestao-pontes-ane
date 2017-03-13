@@ -17,10 +17,20 @@ class Ponte extends Model
         'lng_fim',
         'tipo_obstaculo',
         'local_obstaculo',
+        'imagem',
+        'nome_obstaculo',
+        'cadeia',
+        'passeio',
+        'tipo_material',
+        'superficie_corrida',
+        'juntas',
+        'rolamento',
+        'barreira',
+        'comprimento_extensao',
+        'nr_link',
         'estado_ponte',
         'distrito_id',
         'estrada_id',
-        'imagem',
         'tipo_id'
     ];
 

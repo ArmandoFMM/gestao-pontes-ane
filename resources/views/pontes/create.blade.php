@@ -62,7 +62,11 @@
             <p>Localizacão</p>
         </div>
         <div class="passo">
-            <a href="#passo-3" type="button" class="btn-floating waves-effect waves-light" disabled><i class="material-icons">perm_media</i></a>
+            <a href="#passo-3" type="button" class="btn-floating waves-effect waves-light" disabled><i class="material-icons">location_on</i></a>
+            <p>Estrutura</p>
+        </div>
+        <div class="passo">
+            <a href="#passo-4" type="button" class="btn-floating waves-effect waves-light" disabled><i class="material-icons">perm_media</i></a>
             <p>Media</p>
         </div>
     </div>
@@ -109,12 +113,29 @@
                     </div>
 
                     <div class="input-field col s12 m6">
+                        <input id="nome_obstaculo" name="nome_obstaculo"  maxlength="100"  type="text"/>
+                        <label for="nome_obstaculo">Nome do Obstáculo</label>
+                    </div>
+
+                    <div class="input-field col s12 m6">
                         <select name="estado_ponte" required>
                             <option value="" disabled selected>Selecione uma opcão</option>
                             <option value="bom">Bom</option>                                 
                             <option value="degradada">Degradada</option>                                 
                         </select>
                         <label>Estado da Ponte</label>
+                    </div>
+
+
+                    <div class="input-field col s12 m6">
+                        <input id="nr_link" name="nr_link"  type="number"/>
+                        <label for="nr_link">Número de Link</label>
+                    </div>
+
+
+                    <div class="input-field col s12 m6">
+                        <input id="cadeia" name="cadeia"  type="number"/>
+                        <label for="cadeia">Cadeia</label>
                     </div>
 
                     <div class="col s12 right">
@@ -176,7 +197,62 @@
         </div>
 
 
+
         <div class="row setup-content" id="passo-3">
+                    <h5 class="center-align">Estrutura da Ponte </h5>
+                    
+                    <div class="input-field col s12 m6">
+                        <input id="tipo_material" name="tipo_material"  type="text"/>
+                        <label for="tipo_material">Tipo de Material</label>
+                    </div>
+                
+                    <div class="input-field col s12 m6">
+                        <input id="passeio" name="passeio"  type="number"/>
+                        <label for="passeio">Passeio</label>
+                    </div>
+
+                    <div class="input-field col s12 m6">
+                        <input id="superficie_corrida" name="superficie_corrida"  type="text"/>
+                        <label for="superficie_corrida">Superfície de Corrida</label>
+                    </div>
+
+
+                    <div class="input-field col s12 m6">
+                        <input id="juntas" name="juntas"  type="text"/>
+                        <label for="juntas">Juntas</label>
+                    </div>
+
+
+                     <div class="input-field col s12 m6">
+                        <input id="rolamemto" name="rolamemto"  type="text"/>
+                        <label for="rolamemto">Rolamento</label>
+                    </div>
+
+                    <div class="input-field col s12 m6">
+                        <input id="barreira" name="barreira"  type="text"/>
+                        <label for="barreira">Barreira</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input id="comprimento_extensao" name="comprimento_extensao"  type="number"/>
+                        <label for="comprimento_extensao">Comprimento</label>
+                    </div>
+                    
+
+                    <div class="row">
+                        <div class="col s6  left">
+                            <button class="btn btn-primary prevBtn black waves-effect waves-light" type="button"><i class="material-icons left">skip_previous</i>anterior</button>    
+                        </div> 
+                        <div class="col s6 right">
+                            <button class="btn btn-primary nextBtn waves-effect waves-light right" type="button">seguinte<i class="material-icons right">skip_next</i></button>
+                        </div>
+                    </div>  
+        </div>
+
+
+
+
+        <div class="row setup-content" id="passo-4">
                     <h5 class="center-align"> Imagens da Ponte</h5>
                     <div class="file-field input-field">
                         <div class="btn">
