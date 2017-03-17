@@ -115,9 +115,7 @@ $(document).ready(function() {
             },
             allowOutsideClick: true,
             cancelButtonText: 'Cancelar'
-        }).then(function() {
-
-        });
+        })
     });
 
     // Listagem por grid
