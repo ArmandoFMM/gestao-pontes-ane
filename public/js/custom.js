@@ -121,7 +121,7 @@ $(document).ready(function() {
             cancelButtonText: 'Cancelar'
         }).then(function() {
             console.log(' Msg');
-        })
+        });
     });
 
     // Listagem por grid
