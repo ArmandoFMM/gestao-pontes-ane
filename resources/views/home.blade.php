@@ -51,7 +51,7 @@ Dashboard
                 <ul class="collection">
                     @foreach($pontes_estado_bom as $ponte)
                         <li class="collection-item avatar">
-                            <img src="{{asset('storage/'.$ponte->imagem)}}" alt="" class="circle">
+                            <img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->imagem)}}" alt="" class="circle">
                             <span class="title">{{$ponte->nome_ponte}}</span>
                             <p>{{$ponte->estrada->nome_estrada}}<br> {{$ponte->distrito->nome_distrito}}
                             </p>
@@ -85,7 +85,7 @@ Dashboard
                         <ul class="collection">
                         @foreach($pontes_estado_degradada as $ponte)
                             <li class="collection-item avatar">
-                                <img src="{{asset('storage/'.$ponte->imagem)}}" alt="" class="circle">
+                                <img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->imagem)}}" alt="" class="circle">
                                 <span class="title">{{$ponte->nome_ponte}}</span>
                                 <p>{{$ponte->estrada->nome_estrada}}<br> {{$ponte->distrito->nome_distrito}}
                                 </p>
