@@ -119,6 +119,8 @@ $(document).ready(function() {
             },
             allowOutsideClick: true,
             cancelButtonText: 'Cancelar'
+        }).then(function() {
+            console.log(' Msg');
         })
     });
 
