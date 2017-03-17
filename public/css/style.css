@@ -10,6 +10,7 @@ footer.page-footer {
 .sidebar {
     height: 100%;
     position: fixed;
+    transition: opacity 1s ease-in-out;
 }
 
 .sidebar .sidebar-menu {
@@ -148,7 +149,7 @@ nav .brand-logo img {
 @media only screen and (max-width: 992px) {
     .row .col.sidebar,
     #dt-table_length {
-        visibility: hidden;
+        display: none;
     }
     .row .col.conteudo,
     .page-footer {

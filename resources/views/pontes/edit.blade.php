@@ -1,50 +1,51 @@
-@extends('layouts.master') 
+@extends('layouts.master')
 
 
-@section('title') 
-Registar ponte 
-@endsection 
+@section('title')
+    Editar Ponte {{$ponte->nome_ponte}}
+@endsection
 
 @section('css')
-<style>
-    .passo p {
-        margin-top: 10px;
-    }
-    
-    .panel-passos {
-        display: table-row;
-    }
-    
-    .stepwizard {
-        display: table;
-        width: 100%;
-        position: relative;
-        margin-top: 30px;
-    }
-    
-    .passo button[disabled] {
-        opacity: 1 !important;
-        filter: alpha(opacity=100) !important;
-    }
-    
-    .panel-passos:before {
-        top: 14px;
-        bottom: 0;
-        position: absolute;
-        content: " ";
-        width: 100%;
-        height: 1px;
-        background-color: #ccc;
-        z-order: 0;
-    }
-    
-    .passo {
-        display: table-cell;
-        text-align: center;
-        position: relative;
-    }
-</style>
-@endsection 
+    <style>
+   .passo p {
+    margin-top: 10px;
+}
+
+.panel-passos {
+    display: table-row;
+}
+
+.stepwizard {
+    display: table;
+    width: 100%;
+    position: relative;
+    margin-top: 30px;
+}
+
+.passo button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important;
+}
+
+.panel-passos:before {
+    top: 14px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    z-order: 0;
+
+}
+
+.passo {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+    </style>
+@endsection
 
 
 @section('content')
@@ -71,12 +72,13 @@ Registar ponte
         </div>
     </div>
     <div class="row">
-        <form role="form" method="Post" class="col s12" action="{{route('pontes.store')}}" enctype="multipart/form-data" novalidate>
+        <form role="form" method="POST" class="col s12" action="{{route('pontes.update',['id'=>$ponte->id])}}" enctype="multipart/form-data" novalidate>
+            <input type="hidden" name="_method" value="PUT" />
             {{ csrf_field() }}
             <div class="row setup-content" id="passo-1">
                 <h5 class="center-align">Dados da Ponte</h5>
                 <div class="input-field col s12 m6">
-                    <input id="nome_ponte" name="nome_ponte" class="validate" maxlength="100" type="text" required/>
+                    <input id="nome_ponte" name="nome_ponte" class="validate" maxlength="100" type="text" value="{{$ponte->nome_ponte}}" required/>
                     <label for="nome_ponte">Nome da Ponte</label> 
                     
                     @if ($errors->has('nome_ponte'))
@@ -86,7 +88,7 @@ Registar ponte
                     @endif
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="ano_construcao" name="ano_construcao" class="validate" maxlength="4" type="number" required/>
+                    <input id="ano_construcao" name="ano_construcao" class="validate" maxlength="4" type="number" value="{{$ponte->ano_construcao}}" required/>
                     <label for="ano_construcao">Ano de Construcão</label>
                     @if ($errors->has('ano_construcao'))
                         <span class="help-block red-text">
@@ -97,8 +99,12 @@ Registar ponte
                 <div class="input-field col s12 m6">
                     <select name="tipo_id" required>
                             <option value="" disabled selected>Selecione uma opcão</option>
-                            @foreach($tipos as $tipo)    
-                            <option value="{{$tipo->id}}">{{$tipo->designacao_tipo}}</option>
+                            @foreach($tipos as $tipo)
+                            @if ($ponte->tipo_id == $tipo->id)
+                                <option value="{{$tipo->id}}" selected>{{$tipo->designacao_tipo}}</option>
+                            @else
+                                <option value="{{$tipo->id}}">{{$tipo->designacao_tipo}}</option>
+                            @endif    
                             @endforeach
                         </select>
                     <label>Tipo de Ponte</label>
@@ -106,8 +112,14 @@ Registar ponte
                 <div class="input-field col s12 m6">
                     <select name="tipo_obstaculo" required class="validate">
                             <option value="" disabled selected>Selecione uma opcão</option>
-                            <option value="rio">Rio</option>                             
-                            <option value="corrente">Corrente</option>
+                            @if ($ponte->tipo_obstaculo == 'rio')
+                                <option value="rio" selected>Rio</option>
+                                <option value="corrente">Corrente</option>
+                            @else
+                                <option value="corrente" selected>Correnteoption>
+                                 <option value="rio">Rio</option>                             
+                            @endif 
+                           
                             
 
                         </select>
@@ -121,15 +133,15 @@ Registar ponte
                     <label>Localizacão de Obstáculo</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="nome_obstaculo" name="nome_obstaculo" maxlength="100" type="text" />
+                    <input id="nome_obstaculo" name="nome_obstaculo" maxlength="100" value="{{$ponte->nome_obstaculo}}" type="text" />
                     <label for="nome_obstaculo">Nome do Obstáculo</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="nr_link" name="nr_link" type="number" value="0" />
+                    <input id="nr_link" name="nr_link" value="{{$ponte->nr_link}}" type="number" value="0" />
                     <label for="nr_link">Número de Link</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="cadeia" name="cadeia" type="number" value="0" />
+                    <input id="cadeia" name="cadeia" type="number" value="{{$ponte->cadeia}}" />
                     <label for="cadeia">Cadeia</label>
                 </div>
                 <div class="col s12 right">
@@ -139,7 +151,7 @@ Registar ponte
             <div class="row setup-content" id="passo-2">
                 <h5 class="center-align">Localizacão da Ponte </h5>
                 <div class="input-field col s12 m6">
-                    <input id="lat_inicio" name="lat_inicio" class="validate" type="number" required step="any"/>
+                    <input id="lat_inicio" name="lat_inicio" class="validate" type="number" value="{{$ponte->lat_inicio}}" required step="any"/>
                     <label for="lat_inicio">Latidude de inicio da Ponte</label>
                     
 
@@ -150,7 +162,7 @@ Registar ponte
                     @endif
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="lng_inicio" name="lng_inicio" class="validate" type="number" required step="any"/>
+                    <input id="lng_inicio" name="lng_inicio" class="validate" type="number" required value="{{$ponte->lng_inicio}}" step="any"/>
                     <label for="lng_inicio">Longitude de inicio da Ponte</label>
                     
                     @if ($errors->has('lng_inicio'))
@@ -160,7 +172,7 @@ Registar ponte
                     @endif
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="lat_fim" name="lat_fim" class="validate" type="number" required step="any"/>
+                    <input id="lat_fim" name="lat_fim" class="validate" type="number" required value="{{$ponte->lat_fim}}" step="any"/>
                     <label for="lat_fim">Latidude de Fim da Ponte</label>
                 
                     @if ($errors->has('lat_fim'))
@@ -170,7 +182,7 @@ Registar ponte
                     @endif
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="lng_fim" name="lng_fim" class="validate" type="number" required step="any"/>
+                    <input id="lng_fim" name="lng_fim" class="validate" type="number" lat_fim required value="{{$ponte->lng_fim}}" step="any"/>
                     <label for="lng_fim">Longitude de Fim da Ponte</label>
                     @if ($errors->has('lng_fim'))
                         <span class="help-block red-text">
@@ -182,8 +194,12 @@ Registar ponte
                 <div class="input-field col s12 m6">
                     <select name="distrito_id" required class="validate">
                             <option value="" disabled selected>Selecione uma opcão</option>
-                            @foreach($distritos as $distrito)    
-                            <option value="{{$distrito->id}}">{{$distrito->nome_distrito}}</option>
+                            @foreach($distritos as $distrito) 
+                            @if ($ponte->distrito_id == $distrito->id)
+                                <option value="{{$distrito->id}}" selected>{{$distrito->nome_distrito}}</option>
+                            @else
+                                <option value="{{$distrito->id}}">{{$distrito->nome_distrito}}</option>>
+                            @endif 
                             @endforeach
                         </select>
                     <label>Distrito</label>
@@ -196,8 +212,13 @@ Registar ponte
                 <div class="input-field col s12 m6">
                     <select name="estrada_id" required class="validate">
                             <option value="" disabled selected>Selecione uma opcão</option>
-                            @foreach($estradas as $estrada)    
-                            <option value="{{$estrada->id}}">{{$estrada->nome_estrada}}</option>
+                            @foreach($estradas as $estrada)   
+
+                            @if ($ponte->estrada_id == $estrada->id)
+                                <option value="{{$estrada->id}}" selected>{{$estrada->nome_estrada}}</option>
+                            @else
+                                <option value="{{$estrada->id}}">{{$estrada->nome_estrada}}</option>
+                            @endif 
                             @endforeach
                         </select>
                     <label>Estrada</label>

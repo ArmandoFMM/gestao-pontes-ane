@@ -8,7 +8,6 @@ $(document).ready(function() {
             .fadeOut();
     });
 
-
     // SideNav
     $('.side-nav a:not(.dropdown-button)').click(function() {
         $('.button-collapse').sideNav('hide');

@@ -119,7 +119,7 @@ Dashboard
       <i class="large material-icons">add</i>
     </a>
     <ul>
-      <li><a class="btn-floating teal"><i class="material-icons"></i>Ponte</a></li>
+      <li><a href="{{route('pontes.create')}}" class="btn-floating teal"><i class="material-icons">pin_drop</i></a></li>
       <li><a class="btn-floating yellow darken-1"><i class="material-icons">account_circle</i></a></li>
     </ul>
   </div>

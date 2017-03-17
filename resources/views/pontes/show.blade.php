@@ -24,13 +24,13 @@
       <div class="card">
         <div class="card-image">
           <div class="carousel carousel-slider" data-indicators="true">
-            <a class="carousel-item" href="#one!"><img src="{{asset('storage/'.$ponte->imagem)}}"></a>
-            <a class="carousel-item" href="#two!"><img src="{{asset('storage/'.$ponte->imagem)}}"></a>
-            <a class="carousel-item" href="#three!"><img src="{{asset('storage/'.$ponte->imagem)}}"></a>
-            <a class="carousel-item" href="#four!"><img src="{{asset('storage/'.$ponte->imagem)}}"></a>
+            <a class="carousel-item" href="#one!"><img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}"></a>
+            <a class="carousel-item" href="#two!"><img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}"></a>
+            <a class="carousel-item" href="#three!"><img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}"></a>
+            <a class="carousel-item" href="#four!"><img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}"></a>
           </div>
           <span class="card-title">Ponte {{$ponte->nome_ponte}}</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light teal"><i class="material-icons">mode_edit</i></a>
+          <a href="{{route('pontes.edit',['id'=>$ponte->id])}}" class="btn-floating halfway-fab waves-effect waves-light teal"><i class="material-icons">mode_edit</i></a>
         </div>
         <div class="card-content">
             <h5><b>Estrada: </b>{{$ponte->estrada->nome_estrada}}</h5>
@@ -50,6 +50,15 @@
 <script>
 $(document).ready(function(){
    $('.carousel.carousel-slider').carousel({full_width: true}); 
+   autoplay(); 
+function autoplay() {
+    $('.carousel').carousel('next');
+    setTimeout(autoplay, 4500);
+}
 });
+
+    @if(Session::has('message'))
+         Materialize.toast('{{Session::get('message')}}', 4000);
+    @endif
 </script>
 @endsection

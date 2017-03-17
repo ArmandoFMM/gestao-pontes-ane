@@ -78,7 +78,7 @@
                 <td>
                     <a class="modal-trigger btn-floating waves-effect waves-light btn" href="#modal{{$ponte->id}}"><i class="material-icons ver">remove_red_eye</i></a>
                     <span></span>
-                    <a href="#" class="btn-floating waves-effect waves-light delete btn"><i class="material-icons red-text">delete</i></a>
+                    <a data-id="{{$ponte->id}}" href="#" class="btn-floating waves-effect waves-light delete btn"><i class="material-icons red-text">delete</i></a>
                 </td>
             </tr>
         @endforeach

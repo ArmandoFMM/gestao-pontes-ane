@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     var table = $('#dt-table').DataTable({
         "autoWidth": false,
         "searching": true,
@@ -67,16 +73,49 @@ $(document).ready(function() {
 
 
     $('.delete').click(function() {
+        var id = $(this).data("id");
+        var linha = $(this).closest('tr');
         swal({
             title: 'Tem a certeza?',
-            text: 'Não será possivel reverter esta accão',
+            text: 'Não será possivel reverter esta accão, Coloque a sua senha',
             type: 'warning',
+            html: '<form class="form-horizontal">' +
+                '<div>' +
+                '<div class="input-field col s12">' +
+                '<input id="password" type="password" class="form-control" name="password" required>' +
+                '<label for="password">Password</label>' +
+                '</div>' +
+                '</div>' +
+
+                '</form>',
             confirmButtonColor: '#d33',
             showCancelButton: true,
             confirmButtonText: 'Sim, Eliminar',
+            preConfirm: function() {
+
+                var password = $("#password").val();
+                var rota = "http://localhost:8000/pontes/" + id + "?xs=" + password;
+
+                $.ajax({
+                    url: rota,
+                    type: 'DELETE',
+                    success: function(data) {
+                        swal({
+                            title: 'Eliminada!',
+                            text: data.msg,
+                            timer: 2000
+                        });
+                        linha.remove();
+                    }
+
+                });
+
+
+            },
+            allowOutsideClick: true,
             cancelButtonText: 'Cancelar'
         }).then(function() {
-            swal('Eliminado', 'Registo Eliminado com sucesso', 'success')
+
         });
     });
 
