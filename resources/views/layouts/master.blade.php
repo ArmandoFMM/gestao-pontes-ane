@@ -69,8 +69,8 @@
     <link rel="shortcut icon" href="/img/favicon.png">
 
     <!-- SweetAlert -->
-    <link href="/css/sweetalert2.min.css" rel="stylesheet">
-    <script src="/js/sweetalert2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/sweetalert2/6.4.4/sweetalert2.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/sweetalert2/6.4.4/sweetalert2.js"></script>
     
     <!-- CSS Libs 
     <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
@@ -144,7 +144,7 @@
 <div class="navbar-fixed">
     <nav class="nav  grey darken-4">
         <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">
+            <a href="{{url('/home')}}" class="brand-logo">
             <img class="responsive-img circle" src="/img/logo-ane.png">
             </a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>

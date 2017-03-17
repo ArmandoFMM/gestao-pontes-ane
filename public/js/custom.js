@@ -75,53 +75,94 @@ $(document).ready(function() {
     $('.delete').click(function() {
         var id = $(this).data("id");
         var linha = $(this).closest('tr');
+
+
         swal({
             title: 'Tem a certeza?',
+            text: 'Introduza a senha',
+            input: 'password',
             type: 'warning',
-            html: '<form class="form-horizontal">' +
-                '<h6>Não será possivel reverter esta accão</h6>' +
-                '<h6 class="red-text">Introduza a sua senha</h6>' +
-                '<div>' +
-                '<div class="input-field col s12">' +
-                '<input id="password" type="password" class="form-control" name="password" required>' +
-                '<label for="password">Password</label>' +
-                '</div>' +
-                '</div>' +
-
-                '</form>',
-            confirmButtonColor: '#d33',
             showCancelButton: true,
             confirmButtonText: 'Sim, Eliminar',
-            preConfirm: function() {
+            showLoaderOnConfirm: true,
+            preConfirm: function(password) {
+                return new Promise(function(resolve, reject) {
+                    var rota = "http://sgp-ane.herokuapp.com/pontes/" + id + "?xs=" + password;
 
-                var password = $("#password").val();
-                var rota = "http://sgp-ane.herokuapp.com/pontes/" + id + "?xs=" + password;
 
-                $.ajax({
-                    url: rota,
-                    type: 'DELETE',
-                    success: function(data) {
+                    $.ajax({
+                        url: rota,
+                        type: 'DELETE',
+                        success: function(data) {
 
-                        if (data.status == 'success') {
-                            swal({
-                                title: 'Eliminada!',
-                                text: data.msg,
-                                timer: 2000
-                            });
-                            linha.remove();
+                            if (data.status == 'unauthenticated') {
+                                reject('Senha inválida');
+                            } else if (data.status == 'success') {
+                                resolve();
+                                linha.remove();
+                            }
                         }
 
-                    }
-
+                    });
                 });
-
-
             },
-            allowOutsideClick: true,
-            cancelButtonText: 'Cancelar'
+            allowOutsideClick: false
         }).then(function() {
-            console.log(' Msg');
+            swal({
+                title: 'Eliminada!',
+                text: 'Ponte Eliminada com sucesso',
+                timer: 2000
+            });
         });
+
+
+        //     swal({
+        //         title: 'Tem a certeza?',
+        //         type: 'warning',
+        //         html: '<form class="form-horizontal">' +
+        //             '<h6>Não será possivel reverter esta accão</h6>' +
+        //             '<h6 class="red-text">Introduza a sua senha</h6>' +
+        //             '<div>' +
+        //             '<div class="input-field col s12">' +
+        //             '<input id="password" type="password" class="form-control" name="password" required>' +
+        //             '<label for="password">Password</label>' +
+        //             '</div>' +
+        //             '</div>' +
+
+        //             '</form>',
+        //         confirmButtonColor: '#d33',
+        //         showCancelButton: true,
+        //         confirmButtonText: 'Sim, Eliminar',
+        //         preConfirm: function() {
+
+        //             var password = $("#password").val();
+        //             var rota = "http://localhost:8000/pontes/" + id + "?xs=" + password;
+
+        //             $.ajax({
+        //                 url: rota,
+        //                 type: 'DELETE',
+        //                 success: function(data) {
+
+        //                     if (data.status == 'success') {
+        //                         swal({
+        //                             title: 'Eliminada!',
+        //                             text: data.msg,
+        //                             timer: 2000
+        //                         });
+        //                         linha.remove();
+        //                     }
+
+        //                 }
+
+        //             });
+
+
+        //         },
+        //         allowOutsideClick: true,
+        //         cancelButtonText: 'Cancelar'
+        //     }).then(function() {
+        //         console.log(' Msg');
+        //     });
     });
 
     // Listagem por grid
