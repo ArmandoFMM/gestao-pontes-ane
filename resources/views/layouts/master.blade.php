@@ -72,10 +72,11 @@
     <link href="/css/sweetalert2.min.css" rel="stylesheet">
     <script src="/js/sweetalert2.min.js"></script>
     
-    <!-- CSS Libs -->
+    <!-- CSS Libs 
     <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/css/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/toastr.min.css"> 
+    -->
     @yield('css')
 </head>
 <body>
@@ -243,10 +244,11 @@
 
 
 
-    <!-- Javascript Libs -->
+    <!-- Javascript Libs
     <script type="text/javascript" src="/js/select2.full.min.js"></script>
     <script type="text/javascript" src="/js/readmore.min.js"></script>
     <script type="text/javascript" src="/js/toastr.min.js"></script>
+    -->
     <script>
         @if(Session::has('message'))
         var type = "{{ Session::get('alert-type', 'info') }}";
