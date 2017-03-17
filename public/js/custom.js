@@ -101,12 +101,16 @@ $(document).ready(function() {
                     url: rota,
                     type: 'DELETE',
                     success: function(data) {
-                        swal({
-                            title: 'Eliminada!',
-                            text: data.msg,
-                            timer: 2000
-                        });
-                        linha.remove();
+
+                        if (data.status == 'success') {
+                            swal({
+                                title: 'Eliminada!',
+                                text: data.msg,
+                                timer: 2000
+                            });
+                            linha.remove();
+                        }
+
                     }
 
                 });
