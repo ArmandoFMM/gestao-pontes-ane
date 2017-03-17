@@ -95,7 +95,7 @@ $(document).ready(function() {
             preConfirm: function() {
 
                 var password = $("#password").val();
-                var rota = "http://localhost:8000/pontes/" + id + "?xs=" + password;
+                var rota = "http://sgp-ane.herokuapp.com/pontes/" + id + "?xs=" + password;
 
                 $.ajax({
                     url: rota,
