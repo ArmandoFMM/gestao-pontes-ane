@@ -85,6 +85,7 @@ $(document).ready(function() {
             showCancelButton: true,
             confirmButtonText: 'Sim, Eliminar',
             showLoaderOnConfirm: true,
+            confirmButtonColor: '#d33',
             preConfirm: function(password) {
                 return new Promise(function(resolve, reject) {
                     var rota = "http://sgp-ane.herokuapp.com/pontes/" + id + "?xs=" + password;
