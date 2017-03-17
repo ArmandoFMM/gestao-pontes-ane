@@ -80,7 +80,7 @@ $(document).ready(function() {
             type: 'warning',
             html: '<form class="form-horizontal">' +
                 '<h6>Não será possivel reverter esta accão</h6>' +
-                '<h6 class="red-text">Coloque a sua senha</h6>' +
+                '<h6 class="red-text">Introduza a sua senha</h6>' +
                 '<div>' +
                 '<div class="input-field col s12">' +
                 '<input id="password" type="password" class="form-control" name="password" required>' +
