@@ -107,7 +107,7 @@
                             @endif    
                             @endforeach
                         </select>
-                    <label>Tipo de Ponte</label>
+                    <label>Tipo de Pont</label>
                 </div>
                 <div class="input-field col s12 m6">
                     <select name="tipo_obstaculo" required class="validate">

@@ -88,7 +88,7 @@ $(document).ready(function() {
             confirmButtonColor: '#d33',
             preConfirm: function(password) {
                 return new Promise(function(resolve, reject) {
-                    var rota = "http://sgp-ane.herokuapp.com/pontes/" + id + "?xs=" + password;
+                    var rota = "/pontes/" + id + "?xs=" + password;
 
 
                     $.ajax({

@@ -28,14 +28,14 @@ class Ponte extends Model
         'barreira',
         'comprimento_extensao',
         'nr_link',
+        'visivel',
         'estado_ponte',
         'distrito_id',
         'estrada_id',
         'tipo_id'
     ];
 
-    public function imagens()
-    {
+    public function imagens() {
         return $this->hasMany('App\Imagem');
     }
 

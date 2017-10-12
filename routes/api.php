@@ -23,11 +23,13 @@ Route::get('/user', function (Request $request) {
 
 Route::post('auth', 'AuthController@auth');
 
+Route::get('todas-pontes','PonteController@todasPontes');
+
 
 Route::group(['middleware' => 'auth:api'], function(){
 
 
-    Route::get('todas-pontes','PonteController@todasPontes');
+    // Route::get('todas-pontes','PonteController@todasPontes');
 
     Route::get('todos-distritos','DistritoController@todosDistritos');
 

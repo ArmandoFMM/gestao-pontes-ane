@@ -19,18 +19,32 @@ class PontesTableSeeder extends Seeder
         factory(App\Estrada::class, 4)->create();
 
         factory(App\Country::class)->create()->each( function ($country){
-            
-            factory(App\Provincia::class, 4)->create(['country_id' => $country->id])->each(
+
+            //Registo da Provincia de Maputo e seus Distritos
+            factory(App\Provincia::class)->create(['country_id' => $country->id,'nome_provincia' => 'Maputo'])->each(
                 function ($provincia){
 
 
-                    factory(App\Distrito::class)->create(['provincia_id' => $provincia->id])->each(
-                        function ($distrito){
-                            
+                    factory(App\Distrito::class)->create(['provincia_id' => $provincia->id,'nome_distrito' => 'Maputo Cidade'])->each(
+                        function ($distrito){           
+                });
+
+
+                 factory(App\Distrito::class)->create(['provincia_id' => $provincia->id,'nome_distrito' => 'Matola'])->each(
+                        function ($distrito){           
+                });
+
+                 factory(App\Distrito::class)->create(['provincia_id' => $provincia->id,'nome_distrito' => 'Manhiça'])->each(
+                        function ($distrito){           
+                });
+
+                factory(App\Distrito::class)->create(['provincia_id' => $provincia->id,'nome_distrito' => 'Boane'])->each(
+                        function ($distrito){           
                 });
 
                     
                 });
+
         });
 
 

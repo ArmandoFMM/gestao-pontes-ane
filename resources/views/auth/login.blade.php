@@ -46,7 +46,7 @@ Login
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <div class="input-field col s12">
                                 <input id="password" type="password" class="form-control" name="password" required>
-                                <label for="password">Password</label>
+                                <label for="password">Palavra-passe</label>
                             </div>
                         </div>
                         <!--
@@ -66,7 +66,7 @@ Login
                                 </button>
 
                                 <a class="" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
+                                    Esqueceu a sua Palavra-passe?
                                 </a>
                             </div>
                         </div>

@@ -3,6 +3,11 @@ footer.page-footer {
     background-color: #0068A9;
 }*/
 
+.page-footer {
+    position: fixed;
+    bottom: 0;
+}
+
 .row .col.sidebar {
     padding: 0;
 }
@@ -154,6 +159,7 @@ nav .brand-logo img {
     .row .col.conteudo,
     .page-footer {
         width: 100%;
+        position: static;
     }
     #area-search {
         float: initial;

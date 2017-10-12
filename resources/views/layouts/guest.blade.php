@@ -39,7 +39,7 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h2 class="header center">Ferramenta de Mapeamento e Controle de Pontes</h2>
+      <h2 class="header center">Sistema de Gestão de Pontes</h2>
       <div class="row center">
         <h5 class="header col s12 light">Uma Ferramenta Lorem ipsum errsrt greawen mut taere raedm toiabsb</h5>
       </div>
