@@ -22,7 +22,7 @@ class PonteController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('todasPontes');
     }
 
 
