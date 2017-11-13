@@ -15,6 +15,8 @@ class CreateTipoInspecaosTable extends Migration
     {
         Schema::create('tipo_inspecaos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('designacao_tipo_inspecao')->unique();
+            $table->text('descricao_tipo_inspecao');
             $table->timestamps();
         });
     }

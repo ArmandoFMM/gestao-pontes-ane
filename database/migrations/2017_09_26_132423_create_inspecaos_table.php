@@ -15,6 +15,10 @@ class CreateInspecaosTable extends Migration
     {
         Schema::create('inspecaos', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('data');
+            $table->text('comentario');
+            $table->integer('inspector_id')->unsigned()->index();
+            $table->foreign('inspector_id')->references('id')->on('inspectors');
             $table->timestamps();
         });
     }

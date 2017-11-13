@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInspectorsTable extends Migration
+class CreateEstadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateInspectorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('inspectors', function (Blueprint $table) {
+        Schema::create('estados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->integer('user_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('designacao_estado')->unique();
+            $table->text('descricao_estado');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateInspectorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inspectors');
+        Schema::dropIfExists('estados');
     }
 }

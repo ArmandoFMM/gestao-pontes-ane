@@ -1,12 +1,12 @@
 <?php
 
-namespace App\ Http\ Controllers;
+namespace App\Http\Controllers;
 
-use App\ Ponte;
-use App\ Distrito;
-use App\ TipoDePonte;
-use App\ Estrada;
-use Illuminate\ Http\ Request;
+use App\Ponte;
+use App\Distrito;
+use App\TipoDePonte;
+use App\Estrada;
+use Illuminate\Http\Request;
 use Validator;
 use Session;
 use Cloudder;
@@ -34,7 +34,7 @@ class PonteController extends Controller
      */
     public function index()
     {
-        $pontes = Ponte::all();
+        $pontes = Ponte::where('visivel', true)->get();
         return view('pontes.index', compact('pontes'));
 
     }
@@ -90,7 +90,7 @@ class PonteController extends Controller
 
 
         if ($request->file('img')) {
-            $request->request->add(['imagem' => 'pontes-img']);
+            $request->request->add(['imagem' => 'pontes-img', 'visivel' => true]);
             $ponte = Ponte::create($request->all());
             Cloudder::upload($request->file('img'), 'pontes-img/' . $ponte->id);
 
@@ -206,5 +206,28 @@ class PonteController extends Controller
         }
         return response()->json("Erro");
 
+    }
+
+
+    public function validarPontes(){
+
+        $pontes = Ponte::where('visivel',false)->get();
+
+        return view('pontes.validate', compact('pontes'));
+    }
+
+    public function validarPonte($id) {
+        $ponte = Ponte::find($id);
+
+        if($ponte){
+            if(!$ponte->visivel){
+                $ponte->visivel = true;
+                $ponte->save();
+                return redirect('/pontes');
+            }
+        }
+        else {
+
+        }
     }
 }

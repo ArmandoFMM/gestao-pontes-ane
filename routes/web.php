@@ -21,4 +21,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('pontes','PonteController');
 
+Route::get('/validar-pontes', 'PonteController@validarPontes');
+
+Route::get('/validar-pontes/{id}', 'PonteController@validarPonte');
+
 Auth::routes();

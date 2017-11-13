@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInspectorsTable extends Migration
+class CreateEstadoPonteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateInspectorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('inspectors', function (Blueprint $table) {
+        Schema::create('estado_ponte', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->integer('user_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->integer('estado_id')->unsigned()->index();
+            $table->foreign('estado_id')->references('id')->on('estados');
+            $table->integer('ponte_id')->unsigned()->index();
+            $table->foreign('ponte_id')->references('id')->on('pontes');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateInspectorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inspectors');
+        Schema::dropIfExists('estado_ponte');
     }
 }

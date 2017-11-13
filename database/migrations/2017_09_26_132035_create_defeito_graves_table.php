@@ -15,6 +15,8 @@ class CreateDefeitoGravesTable extends Migration
     {
         Schema::create('defeito_graves', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('designacao_defeito')->unique();
+            $table->text('descricao_defeito');
             $table->timestamps();
         });
     }

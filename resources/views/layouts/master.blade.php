@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -139,6 +138,8 @@
        <li>
            <div class="divider"></div>
        </li>
+       <li><a href="/validar-pontes" class="waves-effect black-text"><i class="material-icons">check_circle</i>Validar Registos</a></li>
+       
 </ul>
 
 <div class="navbar-fixed">
@@ -203,6 +204,10 @@
              <li>
                 <div class="divider"></div>
             </li>
+            <li>
+                <a href="/validar-pontes" class="waves-effect black-text"><i class="material-icons">check_circle</i>Validar Registos</a>
+            </li>
+            
         </ul>
     </div>
 
