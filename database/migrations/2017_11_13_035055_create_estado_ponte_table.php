@@ -20,6 +20,7 @@ class CreateEstadoPonteTable extends Migration
             $table->foreign('estado_id')->references('id')->on('estados');
             $table->integer('ponte_id')->unsigned()->index();
             $table->foreign('ponte_id')->references('id')->on('pontes');
+            $table->date('data');
             $table->timestamps();
         });
     }
