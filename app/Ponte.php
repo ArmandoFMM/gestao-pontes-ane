@@ -2,11 +2,22 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ponte extends Model
 {
     protected $table = 'pontes';
+
+    use SoftDeletes;
+    
+        /**
+         * The attributes that should be mutated to dates.
+         *
+         * @var array
+         */
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [
         'nome_ponte',
@@ -52,6 +63,20 @@ class Ponte extends Model
     public function tipo()
     {
         return $this->belongsTo('App\TipoDePonte');
+    }
+
+    public function inspecaos() {
+        return $this->hasMany('App\Inspecao');
+    }
+
+    public function inspecoesPassadas() {
+
+        return $this->hasMany('App\Inspecao')->where('data', '<=' , Carbon::now())->where('comentario','<>',null);
+    }
+
+    public function inspecoesAgendadas() {
+
+        return $this->hasMany('App\Inspecao')->where('data', '>=' , Carbon::now())->where('comentario',null);
     }
 
 }

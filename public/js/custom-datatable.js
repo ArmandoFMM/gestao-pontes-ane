@@ -60,30 +60,21 @@ $(document).ready(function() {
         table.search(this.value).draw();
     });
 
-    $(".button-collapse").sideNav();
+    $("#dt-table").on('click','.delete-btn', function(e){
+        e.preventDefault();
 
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
-
-    $('select').material_select();
-
-    $('.modal').modal();
-
-
-    $('.delete').click(function() {
+        console.log('test');
         var id = $(this).data("id");
         var linha = $(this).closest('tr');
 
 
         swal({
             title: 'Tem a certeza?',
-            text: 'Introduza a senha',
+            text: 'Deseja realmente arquivar a ponte? Introduza a sua palavra passe!',
             input: 'password',
             type: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Sim, Eliminar',
+            confirmButtonText: 'Sim, Arquivar',
             showLoaderOnConfirm: true,
             confirmButtonColor: '#d33',
             preConfirm: function(password) {
@@ -110,8 +101,8 @@ $(document).ready(function() {
             allowOutsideClick: false
         }).then(function() {
             swal({
-                title: 'Eliminada!',
-                text: 'Ponte Eliminada com sucesso',
+                title: 'Arquivada!',
+                text: 'Ponte Arquivada com sucesso',
                 timer: 2000
             });
         });
@@ -167,8 +158,7 @@ $(document).ready(function() {
     });
 
     // Listagem por grid
-    $('#lista-grid').click(function() {
-
+    $('#lista-grid').on('click', function() {
 
         $('#lista-grid').removeClass('btn-flat');
         $('#lista-grid').addClass('btn');
@@ -184,7 +174,7 @@ $(document).ready(function() {
     });
 
     // Listagem por tabela
-    $('#lista-tabela').click(function() {
+    $('#lista-tabela').on('click', function() {
 
         $('#lista-tabela').removeClass('btn-flat')
         $('#lista-tabela').addClass('btn');

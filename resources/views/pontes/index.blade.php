@@ -76,9 +76,20 @@
                 <td class="">{{$ponte->distrito->nome_distrito}}</td>
                 <td class="">{{$ponte->estado_ponte}}</td>
                 <td>
-                    <a class="modal-trigger btn-floating waves-effect waves-light btn" href="#modal{{$ponte->id}}"><i class="material-icons ver">remove_red_eye</i></a>
+                   <!-- <a class="modal-trigger btn-floating waves-effect waves-light btn" href="#modal{{$ponte->id}}"><i class="material-icons ver">remove_red_eye</i></a>
                     <span></span>
-                    <a data-id="{{$ponte->id}}" href="#" class="btn-floating waves-effect waves-light delete btn"><i class="material-icons red-text">delete</i></a>
+                    <a data-id="{{$ponte->id}}" href="#" class="btn-floating waves-effect waves-light delete btn"><i class="material-icons red-text">delete</i></a>  --}}
+                    -->
+
+                    <a class="dropdown-button" href="#" data-activates="dropdown{{$ponte->id}}"><i class="material-icons">more_vert</i></a>
+
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown{{$ponte->id}}' class='dropdown-content'>
+                        <li><a class="modal-trigger" href="#modal{{$ponte->id}}"><i class="material-icons ver">remove_red_eye</i> Visualizar</a></li>
+                        <li><a href="/inspecoes-history/{{$ponte->id}}"><i class="material-icons">assignment</i> Inspecções</a></li>                        
+                        <li class="divider"></li>
+                        <li><a class="delete-btn" data-id="{{$ponte->id}}" href="#"><i class="material-icons red-text">delete</i> Arquivar</a></li>
+                    </ul>
                 </td>
             </tr>
         @endforeach
@@ -119,7 +130,7 @@
 
 
     <div class="fixed-action-btn">
-        <a href="{{route('pontes.create')}}" class="btn-floating btn-large red">
+        <a href="{{route('pontes.create')}}" class="btn-floating btn-large teal tooltipped" data-position="top" data-delay="50" data-tooltip="Registar Ponte">
             <i class="large material-icons">add</i>
         </a>
     </div>
@@ -198,13 +209,14 @@
 @endsection
 
 @section('js')
+<script type="text/javascript" src="/js/custom-datatable.js"></script>
     <script>
         $(document).ready(function () {
             $('.carousel').carousel();
 
             $('#area-search').insertBefore('#dt-table_length');
 
-            $('#modo-lista').inserAfter('#dt-table_length');
+            //$('#modo-lista').insertAfter('#dt-table_length');
         });
 
         @if(Session::has('message'))

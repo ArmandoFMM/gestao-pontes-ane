@@ -17,8 +17,14 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('pontes','PonteController');
 
+Route::resource('inspecoes','InspecaoController');
+
+Route::get('/hidden-pontes','PonteController@hiddenPontes');
+
 Route::get('/validar-pontes', 'PonteController@validarPontes');
 
-Route::get('/validar-pontes/{id}', 'PonteController@validarPonte');
+Route::post('/validar-ponte', 'PonteController@validarPonte');
+
+Route::get('/inspecoes-history/{id}', 'PonteController@inspecoesByPonte');
 
 Auth::routes();

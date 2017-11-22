@@ -23,6 +23,10 @@
     <meta name="msapplication-TileImage" content="img/touch/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#3372DF">
 
+     <!--Import jQuery before any js-->
+    {{--  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>  --}}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
     <!-- Font Awesome Icons -->
     <script src="https://use.fontawesome.com/1f7371f056.js"></script>
 
@@ -35,16 +39,12 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
     <!--  Compiled and minified DataTable CSS-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" type='text/css'>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type='text/css'>
     
     <!-- Compiled and minified Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!-- Custom Css -->    
     <link rel="stylesheet" href="/css/style.css" type='text/css'>
-
-
-    <!--Import jQuery before any js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
      <!--Load the AJAX API For Google Charts-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -55,15 +55,14 @@
 
 
     <!--Import datatable js-->
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type"text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
 
 
     <!-- Compiled and minified Materialize JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
     <link rel="shortcut icon" href="/img/favicon.png">
 
@@ -213,7 +212,7 @@
 
     <div class="col s12 m8 l9 conteudo">
 
-        <div class="preloader-background">
+        <div id="main-preloader" class="preloader-background">
             <div class="preloader-wrapper big active">
               <div class="spinner-layer spinner-green-only">
                 <div class="circle-clipper left">
@@ -237,7 +236,6 @@
 <script type="text/javascript" src="/js/pdfmake.min.js"></script>
 <script type="text/javascript" src="/js/vfs_fonts.js"></script>
 <script type="text/javascript" src="/js/init.js"></script>
-<script type="text/javascript" src="/js/custom.js"></script>
 <footer class="page-footer grey darken-4">
     <div class="footer-copyright">
         <div class="container">

@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Inspecao;
 use App\Ponte;
 use App\Distrito;
+use App\Role;
 use App\TipoDePonte;
 use App\Estrada;
+use App\TipoInspecao;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Validator;
 use Session;
@@ -164,7 +169,7 @@ class PonteController extends Controller
 
                 $ponte = Ponte::findOrFail($id);
 
-                $ponte->destroy($id);
+                $ponte->delete();
 
                 return response(['msg' => 'Ponte Removida dos Registos', 'status' => 'success']);
             } else {
@@ -177,7 +182,7 @@ class PonteController extends Controller
     public function todasPontes()
     {
 
-        $pontes = Ponte::with('tipo')->with('distrito.provincia')->with('estrada')->get();
+        $pontes = Ponte::with(['tipo','distrito.provincia','estrada'])->where('visivel', true)->get();
         return response()->json($pontes->toArray());
     }
 
@@ -216,18 +221,53 @@ class PonteController extends Controller
         return view('pontes.validate', compact('pontes'));
     }
 
-    public function validarPonte($id) {
+    public function validarPonte(Request $request) {
+        
+        if(Auth::check()) {
+
+            $ponte = Ponte::find($request->id);
+            
+                    if($ponte){
+                        if(!$ponte->visivel){
+                            $ponte->visivel = true;
+                            $ponte->save();
+                            return response(['msg' => 'Registo Validado', 'status' => 'success']);
+                        }
+                    }
+        }
+        return response(['msg' => 'Erro ao tentar validar registo de ponte', 'status' => 'error']);
+        
+    }
+
+
+    public function hiddenPontes(){
+
+        $pontes = Ponte::where('visivel',false)->get();
+        
+        return response()->json(['pontes' => $pontes->toArray()]);
+    }
+
+    public function inspecoesByPonte($id){
+
+
         $ponte = Ponte::find($id);
 
-        if($ponte){
-            if(!$ponte->visivel){
-                $ponte->visivel = true;
-                $ponte->save();
-                return redirect('/pontes');
-            }
-        }
-        else {
+        if($ponte->visivel){
 
+            $role = Role::where('nome_role','Inspector')->first();
+
+            $inspectores = User::where('role_id', $role->id)->where('provincia_id', $ponte->distrito->provincia->id)->get();
+
+            $tiposInpecao = TipoInspecao::all();
+
+            return view('inspecoes.ponte-history', compact('ponte','inspectores','tiposInpecao' ));
         }
+
+
+        return redirect('/pontes');
+
+
     }
+
+
 }

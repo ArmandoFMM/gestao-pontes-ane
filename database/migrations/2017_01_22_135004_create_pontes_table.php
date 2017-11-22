@@ -17,10 +17,10 @@ class CreatePontesTable extends Migration
             $table->increments('id');
             $table->string('nome_ponte')->unique();
             $table->integer('ano_construcao');
-            $table->decimal('lat_inicio', 10,7)->nullable();
-            $table->decimal('lng_inicio', 10,7)->nullable();
-            $table->decimal('lat_fim', 10,7)->nullable();
-            $table->decimal('lng_fim', 10,7)->nullable();
+            $table->decimal('lat_inicio', 14,7)->nullable();
+            $table->decimal('lng_inicio', 14,7)->nullable();
+            $table->decimal('lat_fim', 14,7)->nullable();
+            $table->decimal('lng_fim', 14,7)->nullable();
             $table->string('imagem')->nullable();
             $table->string('tipo_obstaculo')->nullable();
             $table->string('local_obstaculo')->nullable();

@@ -33,4 +33,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+
+    public function provincia()
+    {
+        return $this->belongsTo('App\Provincia');
+    }
 }

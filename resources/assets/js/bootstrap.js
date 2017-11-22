@@ -31,6 +31,15 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
+window.Laravel = { csrfToken: $('meta[name=csrf-token]').attr("content") };
+
+window.axios = require('axios');
+
+window.axios.defaults.headers.common = {
+    'X-CSRF-TOKEN': window.Laravel.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest'
+};
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

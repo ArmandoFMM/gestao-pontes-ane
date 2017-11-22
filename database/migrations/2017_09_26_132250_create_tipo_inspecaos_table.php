@@ -17,6 +17,7 @@ class CreateTipoInspecaosTable extends Migration
             $table->increments('id');
             $table->string('designacao_tipo_inspecao')->unique();
             $table->text('descricao_tipo_inspecao');
+            $table->integer('periodicidade')->nullable();
             $table->timestamps();
         });
     }

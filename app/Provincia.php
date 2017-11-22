@@ -18,8 +18,8 @@ class Provincia extends Model
         return $this->hasMany('App\Distrito');
     }
 
-    public function country()
+    public function users()
     {
-        return $this->belongsTo('App\Country');
+        return $this->hasMany('App\User');
     }
 }
