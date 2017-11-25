@@ -16,7 +16,9 @@ class CreateProblemasTable extends Migration
         Schema::create('problemas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('designacao_problema')->unique();
-            $table->text('descricao_problema');
+            $table->text('descricao_problema')->nullable();
+            $table->integer('categoria_id')->unsigned()->index();
+            $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->timestamps();
         });
     }

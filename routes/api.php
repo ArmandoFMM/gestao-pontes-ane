@@ -33,12 +33,13 @@ Route::group(['middleware' => 'auth:api'], function(){
 
     Route::get('user-inspecoes/{id}','InspecaoController@inspecoesByUserAPI');
 
-
     Route::get('todos-distritos','DistritoController@todosDistritos');
 
     Route::get('todas-estradas','EstradaController@todasEstradas');
 
     Route::get('todos-tipos','TipoDePonteController@todosTipos');
+
+    Route::get('all-probs','ProblemasController@getAllProblemas');
 
     Route::post('registar-ponte','PonteController@registar');
 

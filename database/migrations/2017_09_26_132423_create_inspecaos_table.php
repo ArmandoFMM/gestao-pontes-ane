@@ -17,6 +17,7 @@ class CreateInspecaosTable extends Migration
             $table->increments('id');
             $table->date('data');
             $table->text('comentario')->nullable();
+            $table->boolean('publicada')->default(false);
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('ponte_id')->unsigned()->index();
