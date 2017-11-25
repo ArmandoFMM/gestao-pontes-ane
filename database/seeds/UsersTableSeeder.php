@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'asitoe@ane.gov.mz',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
-            'role_id' => 1
+            'role_id' => 1,
+            'distrito_id' => 1
         ]);
 
 
@@ -25,7 +26,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'cmiguel@ane.gov.mz',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
-            'role_id' => 2
+            'role_id' => 2,
+            'distrito_id' => 1
         ]);
 
         DB::table('users')->insert([
@@ -33,7 +35,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'asasibindy@ane.gov.mz',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
-            'role_id' => 3
+            'role_id' => 3,
+            'distrito_id' => 1
         ]);
 
 
