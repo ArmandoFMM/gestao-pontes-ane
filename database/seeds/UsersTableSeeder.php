@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
             'role_id' => 1,
-            'distrito_id' => 1
+            'provincia_id' => 1
         ]);
 
 
@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
             'role_id' => 2,
-            'distrito_id' => 1
+            'provincia_id' => 1
         ]);
 
         DB::table('users')->insert([
@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
             'role_id' => 3,
-            'distrito_id' => 1
+            'provincia_id' => 1
         ]);
 
 
