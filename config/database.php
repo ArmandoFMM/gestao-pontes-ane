@@ -6,7 +6,6 @@
     $password = $url["pass"];
     $database = substr($url["path"], 1);
 
-
 return [
 
     /*
