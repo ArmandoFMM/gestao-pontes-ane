@@ -40,7 +40,6 @@ class Ponte extends Model
         'comprimento_extensao',
         'nr_link',
         'visivel',
-        'estado_ponte',
         'distrito_id',
         'estrada_id',
         'tipo_id'
@@ -71,12 +70,22 @@ class Ponte extends Model
 
     public function inspecoesPassadas() {
 
-        return $this->hasMany('App\Inspecao')->where('data', '<=' , Carbon::now())->where('comentario','<>',null);
+        return $this->hasMany('App\Inspecao')->where('publicada',true);
     }
 
     public function inspecoesAgendadas() {
 
-        return $this->hasMany('App\Inspecao')->where('data', '>=' , Carbon::now())->where('comentario',null);
+        return $this->hasMany('App\Inspecao')->where('realizada',false);
+    }
+
+    public function estados() {
+
+        return $this->hasMany('App\Estado')->withPivot('data');
+    }
+
+    public function currentEstado() {
+
+        return $this->estados()[count($this->estados())-1];
     }
 
 }

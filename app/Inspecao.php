@@ -12,7 +12,10 @@ class Inspecao extends Model
         'data',
         'tipo_inspecao_id',
         'user_id',
-        'ponte_id'
+        'ponte_id',
+        'realizada',
+        'publicada',
+        'comentario',
     ];
 
     public function tipo_inspecao(){
@@ -30,5 +33,10 @@ class Inspecao extends Model
     public function getDataAttribute($value) {
 
         return date("d/m/y", strtotime($value));
+    }
+
+    public function problemas() {
+
+        return $this->belongsToMany('App\Problema');
     }
 }

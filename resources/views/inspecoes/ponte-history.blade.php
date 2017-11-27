@@ -22,6 +22,23 @@
           </div>
           @else
           <div>
+
+              <div class="col s12">
+
+                  <ul class="collection">
+                      @foreach($ponte->inspecoesPassadas as $realizada)
+                          <li class="collection-item avatar">
+                              <i class="material-icons circle green">remove_red_eye</i>
+                              <span class="title">{{$realizada->tipo_inspecao->designacao_tipo_inspecao}}</span>
+                              <p>{{$realizada->data}} <br>
+                                  {{$realizada->user->name}}
+                              </p>
+                              <a href="#!" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>
+                          </li>
+                      @endforeach
+                  </ul>
+
+              </div>
                          
           </div>
     @endif

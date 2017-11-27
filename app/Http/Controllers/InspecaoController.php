@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Inspecao;
+use App\Problema;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -89,9 +91,38 @@ class InspecaoController extends Controller
     }
 
 
+    public function saveInspecao(Request $request) {
+        $inspecao = Inspecao::find($request->id);
+
+        if($inspecao) {
+            foreach ($request->problemas as $problema){
+
+                $prob = Problema::find($problema['id']);
+
+                $inspecao->problemas()->attach($prob->id, [
+                    'dimensao' => $problema['dimensao'],
+                    'nivel_deterioracao' => $problema['nivel_deterioracao'],
+                    'nota' => /* $problema['nota'] ? $problema['nota'] : */ '',
+                ]);
+
+            }
+
+            $inspecao->data = $request->data ? $request->data : date('Y-m-d');
+            $inspecao->comentario = $request->comentario;
+            $inspecao->publicada = $request->publicar;
+            $inspecao->realizada = true;
+            $inspecao->save();
+
+            return response()->json(['msg' => 'Inspeção registada com sucesso']);
+
+        }
+
+    }
+
+
     public function inspecoesByUserAPI($id) {
 
-        $inspecoes = Inspecao::where('user_id', $id)->with(['ponte', 'tipo_inspecao'])->get();
+        $inspecoes = Inspecao::where('user_id', $id)->where('realizada', false)->with(['ponte', 'tipo_inspecao'])->get();
 
         return response()->json(['inspecoes' => $inspecoes->toArray()]);
 

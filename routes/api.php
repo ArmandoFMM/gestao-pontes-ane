@@ -45,4 +45,6 @@ Route::group(['middleware' => 'auth:api'], function(){
 
     Route::post('upload','PonteController@uploadPhotos');
 
+    Route::post('add-inspecao','InspecaoController@saveInspecao');
+
 });

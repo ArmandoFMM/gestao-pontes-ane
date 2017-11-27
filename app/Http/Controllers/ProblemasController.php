@@ -93,4 +93,5 @@ class ProblemasController extends Controller
         return response()->json(['categorias' => $categorias->toArray()]);
 
     }
+
 }

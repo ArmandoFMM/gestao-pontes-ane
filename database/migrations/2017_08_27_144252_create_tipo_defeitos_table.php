@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDefeitoGravesTable extends Migration
+class CreateTipoDefeitosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateDefeitoGravesTable extends Migration
      */
     public function up()
     {
-        Schema::create('defeito_graves', function (Blueprint $table) {
+        Schema::create('tipo_defeitos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('designacao_defeito')->unique();
-            $table->text('descricao_defeito');
-            $table->integer('tipo_defeito_id')->unsigned()->index();
-            $table->foreign('tipo_defeito_id')->references('id')->on('tipo_defeitos');
+            $table->string('designacao_tipo_defeito');
+            $table->string('descricao_tipo_defeito');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateDefeitoGravesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('defeito_graves');
+        Schema::dropIfExists('tipo_defeitos');
     }
 }
