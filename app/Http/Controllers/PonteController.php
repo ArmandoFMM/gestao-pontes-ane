@@ -269,5 +269,10 @@ class PonteController extends Controller
 
     }
 
+    public function pontesProvincia() {
+
+        
+    }
+
 
 }

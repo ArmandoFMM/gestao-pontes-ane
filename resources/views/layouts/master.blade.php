@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ config('app.name', 'SGP') }} - @yield('title')</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -28,7 +28,7 @@
     <script src="https://use.fontawesome.com/1f7371f056.js"></script>
 
     <!-- Material Design Icons -->
-     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Material Design fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
 
@@ -37,10 +37,10 @@
 
     <!--  Compiled and minified DataTable CSS-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type='text/css'>
-    
+
     <!-- Compiled and minified Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <!-- Custom Css -->    
+    <!-- Custom Css -->
     <link rel="stylesheet" href="/css/style.css" type='text/css'>
 
     <!--Import jQuery before any js-->
@@ -48,12 +48,12 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>--}}
 
-     <!--Load the AJAX API For Google Charts-->
+<!--Load the AJAX API For Google Charts-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <!-- Maps API Key -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO_6budHTHZRsH6Et-tFRfmwt8DedPhHc"
-    async defer></script>
+            async defer></script>
 
 
     <!--Import datatable js-->
@@ -71,7 +71,7 @@
     <!-- SweetAlert -->
     <link href="https://cdn.jsdelivr.net/sweetalert2/6.4.4/sweetalert2.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/sweetalert2/6.4.4/sweetalert2.js"></script>
-    
+
     <!-- CSS Libs 
     <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/css/select2.min.css">
@@ -82,77 +82,88 @@
 <body>
 
 <ul id="dropdown-user" class="dropdown-content" style="margin-top: 65px;">
-  <li><a href="{{ route('logout') }}" 
-                  onclick="event.preventDefault();
+    <li><a href="{{ route('logout') }}"
+           onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">
             Logout
-      </a>
+        </a>
 
-      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-          {{ csrf_field() }}
-      </form>
-  </li>
-  <li><a href="#!">Perfil</a></li>
-  <li ><a href="#!">Configuções</a></li>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
+    </li>
+    <li><a href="#!">Perfil</a></li>
+    <li><a href="#!">Configuções</a></li>
 </ul>
 
-   <ul class="side-nav" id="mobile-demo">
-       <li class="user-area">
-           <div class="userView">
-               <div class="background">
-                   <img class="responsive-img" style="" src="/img/ponte-ane.jpg">
-               </div>
-               <a href="#!user"><i class="material-icons large black-text">account_circle</i></a>
-               <a href="#!name"><span class="name blue-text">{{Auth::user()->name}}</span></a>
-               <a href="#!email"><span class="email blue-text">{{Auth::user()->email}}</span></a>
-           </div>
-       </li>
-       <li class="pesquisar">
-           <nav class="white">
-               <div class="nav-wrapper">
-                   <form>
-                       <div class="input-field">
-                           <input id="search" type="search" required>
-                           <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
-                           <i class="material-icons">close</i>
-                       </div>
-                   </form>
-               </div>
-           </nav>
-       </li>
-       <li><a href="{{url('/home')}}" class="waves-effect black-text"><i class="material-icons">home</i>Inicio</a></li>
-       <li>
-           <div class="divider"></div>
-       </li>
-       <li><a class="waves-effect black-text" href="{{route('pontes.index')}}" ><i class="fa fa-road fa-2x"></i>Pontes</a></li>
-       <li>
-           <div class="divider"></div>
-       </li>
-       <li><a class="waves-effect black-text" href="{{route('pontes.create')}}"><i class="material-icons">add</i>Registar Ponte</a></li>
-       <li>
-           <div class="divider"></div>
-       </li>
-       <li>
-           <div class="divider"></div>
-       </li>
-       <li><a href="#" class="waves-effect black-text"><i class="material-icons">account_circle</i>Utilizadores</a></li>
-       <li>
-           <div class="divider"></div>
-       </li>
-       <li><a href="/validar-pontes" class="waves-effect black-text"><i class="material-icons">check_circle</i>Validar Registos</a></li>
-       
+<ul class="side-nav" id="mobile-demo">
+    <li class="user-area">
+        <div class="userView">
+            <div class="background">
+                <img class="responsive-img" style="" src="/img/ponte-ane.jpg">
+            </div>
+            <a href="#!user"><i class="material-icons large black-text">account_circle</i></a>
+            <a href="#!name"><span class="name blue-text">{{Auth::user()->name}}</span></a>
+            <a href="#!email"><span class="email blue-text">{{Auth::user()->email}}</span></a>
+        </div>
+    </li>
+    <li class="pesquisar">
+        <nav class="white">
+            <div class="nav-wrapper">
+                <form>
+                    <div class="input-field">
+                        <input id="search" type="search" required>
+                        <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+            </div>
+        </nav>
+    </li>
+    <li><a href="{{url('/home')}}" class="waves-effect black-text"><i class="material-icons">home</i>Inicio</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="waves-effect black-text" href="{{route('pontes.index')}}"><i class="fa fa-road fa-2x"></i>Pontes</a>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="waves-effect black-text" href="{{route('pontes.create')}}"><i class="material-icons">add</i>Registar
+            Ponte</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a href="#" class="waves-effect black-text"><i class="material-icons">account_circle</i>Utilizadores</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li>
+        <a href="/validar-pontes" class="waves-effect black-text"><i class="material-icons">check_circle</i>Validar
+            Registos</a>
+    </li>
+    <li>
+        <a href="#modal-download-app" class="waves-effect black-text modal-trigger"><i class="material-icons">settings_cell</i>Baixar
+            App Móvel</a>
+    </li>
+
 </ul>
 
 <div class="navbar-fixed">
     <nav class="nav  grey darken-4">
         <div class="nav-wrapper">
             <a href="{{url('/home')}}" class="brand-logo">
-            <img class="responsive-img circle" src="/img/logo-ane.png">
+                <img class="responsive-img circle" src="/img/logo-ane.png">
             </a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a class="dropdown-button" href="#!"><i class="material-icons">notifications</i></a></li>
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown-user"><i class="medium material-icons left">account_circle</i>{{Auth::user()->name}}<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown-user"><i
+                                class="medium material-icons left">account_circle</i>{{Auth::user()->name}}<i
+                                class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
 
         </div>
@@ -175,40 +186,50 @@
             </li>
             <li class="pesquisar">
                 <nav class="white">
-                <div class="nav-wrapper">
-                    <form>
-                        <div class="input-field">
-                            <input id="search" type="search" required>
-                            <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
-                            <i class="material-icons">close</i>
-                        </div>
-                    </form>
-                </div>
+                    <div class="nav-wrapper">
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search"><i
+                                            class="material-icons black-text">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                    </div>
                 </nav>
             </li>
-            <li><a href="{{url('/home')}}" class="waves-effect black-text"><i class="material-icons">home</i>Inicio</a></li>
-            <li>
-                <div class="divider"></div>
-            </li>
-            <li><a class="waves-effect black-text" href="{{route('pontes.index')}}" ><i class="fa fa-road fa-2x"></i>Pontes</a></li>
-             <li>
-                <div class="divider"></div>
-            </li>
-            <li><a class="waves-effect black-text" href="{{route('pontes.create')}}"><i class="material-icons">add</i>Registar Ponte</a></li>
-             <li>
-                <div class="divider"></div>
+            <li><a href="{{url('/home')}}" class="waves-effect black-text"><i class="material-icons">home</i>Inicio</a>
             </li>
             <li>
                 <div class="divider"></div>
             </li>
-            <li><a href="#" class="waves-effect black-text"><i class="material-icons">account_circle</i>Utilizadores</a></li>
-             <li>
+            <li><a class="waves-effect black-text" href="{{route('pontes.index')}}"><i class="fa fa-road fa-2x"></i>Pontes</a>
+            </li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li><a class="waves-effect black-text" href="{{route('pontes.create')}}"><i class="material-icons">add</i>Registar
+                    Ponte</a></li>
+            <li>
                 <div class="divider"></div>
             </li>
             <li>
-                <a href="/validar-pontes" class="waves-effect black-text"><i class="material-icons">check_circle</i>Validar Registos</a>
+                <div class="divider"></div>
             </li>
-            
+            <li><a href="#" class="waves-effect black-text"><i class="material-icons">account_circle</i>Utilizadores</a>
+            </li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li>
+                <a href="/validar-pontes" class="waves-effect black-text"><i class="material-icons">check_circle</i>Validar
+                    Registos</a>
+            </li>
+            <li>
+                <a href="#modal-download-app" class="waves-effect black-text modal-trigger"><i class="material-icons">settings_cell</i>Baixar
+                    App Móvel</a>
+            </li>
+
         </ul>
     </div>
 
@@ -216,20 +237,20 @@
 
         <div id="main-preloader" class="preloader-background">
             <div class="preloader-wrapper big active">
-              <div class="spinner-layer spinner-green-only">
-                <div class="circle-clipper left">
-                  <div class="circle"></div>
+                <div class="spinner-layer spinner-green-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
                 </div>
-                <div class="gap-patch">
-                  <div class="circle"></div>
-                </div>
-                <div class="circle-clipper right">
-                  <div class="circle"></div>
-                </div>
-              </div>
             </div>
-          </div>
-          
+        </div>
+
         @yield('content')
     </div>
 </div>
@@ -245,37 +266,50 @@
         </div>
     </div>
 </footer>
- 
 
 
+<div id="modal-download-app" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Aplicação Móvel</h4>
+        <i class="material-icons large">settings_cell</i><br/>
+        <a class="btn waves-effect waves-green"><i class="material-icons right">file_download</i>Baixar</a>
+        <p>Baixar Aplicação Móvel de Mapeamento e inspeção de pontes Lorem ipsum amet auctor quis praesent habitasse elementum tempor ut etiam purus, non euismod viverra iaculis
+            augue curabitur elementum justo nullam. curabitur eu suscipit dapibus aptent donec et integer, lobortis duis
+            odio sollicitudin sodales urna bibendum, tristique turpis himenaeos ultricies mollis lacinia</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    </div>
+</div>
 
-    <!-- Javascript Libs
-    <script type="text/javascript" src="/js/select2.full.min.js"></script>
-    <script type="text/javascript" src="/js/readmore.min.js"></script>
-    <script type="text/javascript" src="/js/toastr.min.js"></script>
-    -->
-    <script>
-        @if(Session::has('message'))
-        var type = "{{ Session::get('alert-type', 'info') }}";
-        switch (type) {
-            case 'info':
-                toastr.info("{{ Session::get('message') }}");
-                break;
 
-            case 'warning':
-                toastr.warning("{{ Session::get('message') }}");
-                break;
+<!-- Javascript Libs
+<script type="text/javascript" src="/js/select2.full.min.js"></script>
+<script type="text/javascript" src="/js/readmore.min.js"></script>
+<script type="text/javascript" src="/js/toastr.min.js"></script>
+-->
+<script>
+            @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type', 'info') }}";
+    switch (type) {
+        case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
 
-            case 'success':
-                toastr.success("{{ Session::get('message') }}");
-                break;
+        case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
 
-            case 'error':
-                toastr.error("{{ Session::get('message') }}");
-                break;
-        }
-        @endif
-    </script>
-    @yield('js')
+        case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+
+        case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+    }
+    @endif
+</script>
+@yield('js')
 </body>
 </html>
