@@ -35,6 +35,7 @@ class CreatePontesTable extends Migration
             $table->double('comprimento_extensao')->nullable();
             $table->integer('nr_link')->nullable();
             $table->boolean('visivel')->default(false);
+            $table->string('estado_ponte')->default('');
             $table->integer('distrito_id')->unsigned();
             $table->foreign('distrito_id')->references('id')->on('distritos');
 

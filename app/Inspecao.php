@@ -37,6 +37,11 @@ class Inspecao extends Model
 
     public function problemas() {
 
-        return $this->belongsToMany('App\Problema');
+        return $this->belongsToMany('App\Problema')->withTimestamps();
+    }
+
+    public function defeitos() {
+
+        return $this->belongsToMany('App\DefeitoGrave');
     }
 }

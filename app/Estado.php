@@ -12,6 +12,7 @@ class Estado extends Model
 
     public function pontes() {
 
-        return $this->belongsToMany('App\Ponte');
+        return $this->belongsToMany('App\Ponte')->withPivot('data')->where('visivel', true);
     }
+
 }

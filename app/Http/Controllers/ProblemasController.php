@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categoria;
 use App\Problema;
+use App\TipoDefeito;
 use Illuminate\Http\Request;
 
 class ProblemasController extends Controller
@@ -90,7 +91,9 @@ class ProblemasController extends Controller
 
         $categorias = Categoria::with('problemas')->get();
 
-        return response()->json(['categorias' => $categorias->toArray()]);
+        $tiposDefeitos = TipoDefeito::with('defeitos')->get();
+
+        return response()->json(['categorias' => $categorias->toArray(), 'tiposDefeitos' => $tiposDefeitos->toArray()]);
 
     }
 

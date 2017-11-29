@@ -10,12 +10,12 @@ $(window).on('load', function() {
 $(document).ready(function() {
 
     // SideNav
-    $('.side-nav a:not(.dropdown-button)').click(function() {
+    $(".button-collapse").sideNav();
+
+    $('.side-nav a:not(.dropdown-button)').on('click', function() {
         $('.button-collapse').sideNav('hide');
     });
 
-    $(".button-collapse").sideNav();
-    
     $('select').material_select();    
     
     $('.modal').modal();

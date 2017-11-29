@@ -25,8 +25,17 @@ class HomeController extends Controller
     public function index()
     {
         $pontes = Ponte::where('visivel', true)->get();
-        $pontes_estado_bom = Ponte::where('estado_ponte','like','bom')->where('visivel', true)->get();
-        $pontes_estado_degradada = Ponte::where('estado_ponte','like','degradada')->where('visivel', true)->get();        
-        return view('home',compact('pontes','pontes_estado_bom','pontes_estado_degradada'));
+        $pontes_estado_bom = Ponte::where('estado_ponte','like','Bom')->where('visivel', true)->get();
+        $pontes_estado_grave = Ponte::where('estado_ponte','like','Grave')->where('visivel', true)->get();
+        $pontes_estado_critico = Ponte::where('estado_ponte','like','Critico')->where('visivel', true)->get();
+        $pontes_estado_rotura = Ponte::where('estado_ponte','like','Rotura Iminente')->where('visivel', true)->get();
+
+        return view('home',compact(
+            'pontes',
+            'pontes_estado_bom',
+            'pontes_estado_grave',
+            'pontes_estado_critico',
+            'pontes_estado_rotura'
+        ));
     }
 }

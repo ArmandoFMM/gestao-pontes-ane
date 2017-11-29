@@ -23,9 +23,6 @@
     <meta name="msapplication-TileImage" content="img/touch/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#3372DF">
 
-     <!--Import jQuery before any js-->
-    {{--  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>  --}}
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     <!-- Font Awesome Icons -->
     <script src="https://use.fontawesome.com/1f7371f056.js"></script>
@@ -46,6 +43,11 @@
     <!-- Custom Css -->    
     <link rel="stylesheet" href="/css/style.css" type='text/css'>
 
+    <!--Import jQuery before any js-->
+    {{--  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>  --}}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>--}}
+
      <!--Load the AJAX API For Google Charts-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -56,7 +58,7 @@
 
     <!--Import datatable js-->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script type"text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
 

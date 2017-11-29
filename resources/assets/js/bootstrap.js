@@ -7,7 +7,7 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = require('jquery');
+window.jQuery = window.jQuery = require('jquery');
 require('bootstrap-sass');
 
 /**
@@ -31,7 +31,7 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
-window.Laravel = { csrfToken: $('meta[name=csrf-token]').attr("content") };
+window.Laravel = { csrfToken: jQuery('meta[name=csrf-token]').attr("content") };
 
 window.axios = require('axios');
 
@@ -52,3 +52,7 @@ window.axios.defaults.headers.common = {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+// ECharts
+window.VueECharts = require('vue-echarts');
+Vue.component('chart', VueECharts);

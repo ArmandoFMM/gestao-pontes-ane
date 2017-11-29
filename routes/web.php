@@ -19,6 +19,8 @@ Route::resource('pontes','PonteController');
 
 Route::resource('inspecoes','InspecaoController');
 
+Route::resource('estados','EstadosController');
+
 Route::get('/hidden-pontes','PonteController@hiddenPontes');
 
 Route::get('/validar-pontes', 'PonteController@validarPontes');
@@ -26,5 +28,7 @@ Route::get('/validar-pontes', 'PonteController@validarPontes');
 Route::post('/validar-ponte', 'PonteController@validarPonte');
 
 Route::get('/inspecoes-history/{id}', 'PonteController@inspecoesByPonte');
+
+Route::get('todas-pontes','PonteController@todasPontes');
 
 Auth::routes();

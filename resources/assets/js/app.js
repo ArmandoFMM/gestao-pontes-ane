@@ -15,6 +15,7 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('validate-ponte', require('./components/ValidatePontes.vue'));
+Vue.component('dashboard', require('./components/Dashboard.vue'));
 
 const app = new Vue({
     el: '#app'

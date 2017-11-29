@@ -182,7 +182,7 @@ class PonteController extends Controller
     public function todasPontes()
     {
 
-        $pontes = Ponte::with(['tipo','distrito.provincia','estrada'])->where('visivel', true)->get();
+        $pontes = Ponte::with(['tipo','distrito.provincia','estrada','estados'])->where('visivel', true)->get();
         return response()->json($pontes->toArray());
     }
 
