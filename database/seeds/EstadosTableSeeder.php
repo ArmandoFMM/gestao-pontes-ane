@@ -25,7 +25,7 @@ class EstadosTableSeeder extends Seeder
         ]);
 
         DB::table('estados')->insert([
-            'designacao_estado' => 'Crítico',
+            'designacao_estado' => 'Critico',
             'descricao_estado' => 'Degradação avançada de materiais estruturais (impedir tráfego se necessário)',
         ]);
 

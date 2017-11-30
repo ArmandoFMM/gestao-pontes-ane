@@ -6,9 +6,16 @@
             </div>
         </div>
         <div class="divider"></div>
-        <div class="row">
-            <div class="col m10 offset-m1">
+        <div class="row" style="margin-top: 20px">
+            <div class="col s12">
                 <chart :options="area" auto-resize></chart>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="row" style="margin-top: 20px">
+            <div class="col s12">
+                <chart :options="bar" auto-resize></chart>
             </div>
         </div>
     </div>
@@ -19,30 +26,44 @@
         props: [],
         data: () => ({
                 pie: null,
-                area: {},
+                area: null,
+                bar: null,
                 estados: [],
                 pontes: []
         }),
         mounted() {
             console.log('Component mounted.');
 
-            this.getEstados().then(res => {
+            this.getPontesWithEstados().then(res => {
                 this.estados = res;
                 this.renderPie(res);
 
             });
 
-             // this.renderArea('');
+            this.getProblemas()
+                    .then((res) => this.renderBar(res));
+
+//              this.renderArea('');
 
         },
         methods: {
-            getEstados() {
-                return axios.get('/estados?withPontes=yes',{})
+            getPontesWithEstados() {
+                return axios.get('/estados?with=pontes',{})
                                 .then(response => response.data.estados);
             },
             getPontes() {
                 return axios.get('/todas-pontes',{})
                                 .then(response => response.data.pontes);
+            },
+            getPontesWithProvincias() {
+                return axios.get('/estados?with=provincias',{})
+                        .then(response => response.data);
+
+            },
+            getProblemas() {
+                return axios.get('/todos-problemas?with=inspecoes',{})
+                        .then(response => response.data.problemas);
+
             },
             renderPie(estados) {
 
@@ -54,6 +75,13 @@
                         tooltip: {
                             trigger: 'item',
                             formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {
+                                    title: 'Baixar '
+                                }
+                            }
                         },
                         legend: {
                             orient: 'vertical',
@@ -92,16 +120,40 @@
                         ]
                 };
 
-                console.log(this.$refs.pie);
-
 
             },
-            renderArea(data) {
+            renderBar(problemas) {
+
+                this.bar = {
+                    title: {
+                        text: 'Problemas mais Frequentes'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data: problemas.map((el) => el.designacao_problema)
+                    },
+                    xAxis: {
+                        data: problemas.map((el) => el.designacao_problema),
+                        axisLabel: {show: false}
+                    },
+                    yAxis: {
+                        axisLabel: {show: false}
+                    },
+                    series: [{
+                        name: '',
+                        type: 'bar',
+                        data: problemas.map((el) => el.inspecaos.length)
+                    }]
+                }
+
+            },
+            renderArea(estados, provincias) {
 
 
                 this.area = {
                     title: {
-                        text: 'Pontes por Provincia'
+                        text: 'Pontes por Provincias',
+                        left: 'left'
                     },
                     tooltip : {
                         trigger: 'axis',
@@ -113,11 +165,13 @@
                         }
                     },
                     legend: {
-                        data:['Bom','Grave','Critico','Rotura Iminente']
+                        data: estados.map((el) => el.designacao_estado)
                     },
                     toolbox: {
                         feature: {
-                            saveAsImage: {}
+                            saveAsImage: {
+                                title: 'Baixar '
+                            }
                         }
                     },
                     grid: {
@@ -130,7 +184,7 @@
                         {
                             type : 'category',
                             boundaryGap : false,
-                            data : ['Maputo','Gaza','Inhambane','Sofala','Manica','Tete','Cabo Delgado']
+                            data : provincias.map((el) =>  el.nome_provincia)
                         }
                     ],
                     yAxis : [
@@ -138,30 +192,9 @@
                             type : 'value'
                         }
                     ],
-                    series : [
-                        {
-                            name:'Bom',
-                            type:'line',
-                            stack: 'total',
-                            areaStyle: {normal: {}},
-                            data:[220, 182, 191, 234, 290, 330, 310]
-                        },
-                        {
-                            name:'Grave',
-                            type:'line',
-                            stack: 'total',
-                            areaStyle: {normal: {}},
-                            data:[150, 232, 201, 154, 190, 330, 410]
-                        },
-                        {
-                            name:'Critico',
-                            type:'line',
-                            stack: 'total',
-                            areaStyle: {normal: {}},
-                            data:[320, 332, 301, 334, 390, 330, 320]
-                        },
-                        {
-                            name:'Rotura Iminente',
+                    series : estados.map((el) => {
+                        return {
+                            name: el.designacao_estado,
                             type:'line',
                             stack: 'total',
                             label: {
@@ -171,9 +204,9 @@
                                 }
                             },
                             areaStyle: {normal: {}},
-                            data:[820, 932, 901, 934, 1290, 1330, 1320]
+                            data: el.provincias.map((el) => el.pontes.length)
                         }
-                    ]
+                    })
                 };
 
             }

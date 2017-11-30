@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Estado;
 use App\Ponte;
+use App\Provincia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -16,33 +17,56 @@ class EstadosController extends Controller
      */
     public function index()
     {
-        $withPontes = Input::get('withPontes');
+        $withPontes = Input::get('with');
 
-        if($withPontes === 'yes') {
+        switch ($withPontes){
+            case 'pontes': {
 
-            $estados = Estado::with('pontes')->where('designacao_estado','<>','Rotura')->get();
-            $pontes = Ponte::all();
+                $estados = Estado::with('pontes')->where('designacao_estado','<>','Rotura')->get()->toArray();
+                $pontes = Ponte::all();
 
-            $pontes = $pontes->toArray();
-            $estados = $estados->toArray();
+                $aux = [];
 
-            foreach ($estados as $estado)
-                $estado['pontes'] = [];
-                foreach ($pontes as $ponte){
+                foreach ($estados as $estado){
+                    $estado['pontes'] = array();
+                    foreach ($pontes as $ponte){
+                        if($estado['designacao_estado'] === $ponte->estado_ponte)
+                            $estado['pontes'][] = (object) $ponte;
+                    }
+                    $aux[] = $estado;
+                }
 
-                    if($estado['designacao_estado'] === $ponte['estado_ponte'])
-                        $estado['pontes'] = $ponte;
+                return response()->json(['estados' => $aux]);
 
+            }
+
+            case 'provincias': {
+
+                $estados = Estado::with('pontes')->where('designacao_estado','<>','Rotura')->get()->toArray();
+                $pontes = Ponte::all();
+                $provincias = Provincia::all();
+
+                $aux = [];
+
+                foreach ($estados as $estado){
+                    $estado['pontes'] = array();
+                    foreach ($pontes as $ponte){
+                        if($estado['designacao_estado'] === $ponte->estado_ponte)
+                            $estado['pontes'][] = (object) $ponte;
+                    }
+                    $aux[] = $estado;
                 }
 
 
-            return response()->json(['estados' => $estados]);
 
+                return response()->json(['provincias' => Estado::with('provincias')->get()]);
+
+            }
+
+            default : {
+                return response()->json(['estados' => Estado::all()->toArray()]);
+            }
         }
-
-        return response()->json(['estados' => Estado::all()->toArray()]);
-
-
 
     }
 

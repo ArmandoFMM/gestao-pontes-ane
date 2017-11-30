@@ -33,7 +33,7 @@
                               <p>{{$realizada->data}} <br>
                                   {{$realizada->user->name}}
                               </p>
-                              <a href="#!" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>
+                              <a href="{{route('inspecoes.show',['id' => $realizada->id])}}" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>
                           </li>
                       @endforeach
                   </ul>

@@ -37,7 +37,7 @@ class Inspecao extends Model
 
     public function problemas() {
 
-        return $this->belongsToMany('App\Problema')->withTimestamps();
+        return $this->belongsToMany('App\Problema')->withTimestamps()->withPivot('dimensao','nivel_deterioracao');
     }
 
     public function defeitos() {

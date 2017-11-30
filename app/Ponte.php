@@ -80,7 +80,7 @@ class Ponte extends Model
 
     public function estados() {
 
-        return $this->belongsToMany('App\Estado')->withPivot('data','estado_id')->orderBy('data','desc');
+        return $this->belongsToMany('App\Estado')->withPivot('data')->orderBy('data','desc');
     }
 
 }

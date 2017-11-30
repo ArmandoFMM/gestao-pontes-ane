@@ -8,7 +8,7 @@ class Estado extends Model
 {
     protected $table = 'estados';
 
-    protected $fillable = [];
+    protected $fillable = ['designacao_estado'];
 
     public function pontes() {
 

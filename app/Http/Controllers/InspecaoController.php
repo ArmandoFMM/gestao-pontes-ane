@@ -21,7 +21,7 @@ class InspecaoController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -57,7 +57,9 @@ class InspecaoController extends Controller
      */
     public function show($id)
     {
-        //
+        $inspecao = Inspecao::find($id);
+
+        return view('inspecoes.show', compact('inspecao'));
     }
 
     /**
@@ -166,6 +168,22 @@ class InspecaoController extends Controller
             $id = 9;
 
         return ($id - count($problemas)/count($allProblemas) - (count($defeitos)+count($defeitos)*2)/count($allDefeitos) - 0.5);
+
+    }
+
+
+    public function inspecaoById($id){
+
+        $inspecao = Inspecao::where('id',$id)->with('problemas')->first();
+
+        if($inspecao){
+            $ponte = Ponte::where('id',$inspecao->ponte->id)->with('inspecaos')->first();
+
+            return response()->json(['ponte' => $ponte->toArray(), 'inspecao' => $inspecao->toArray()]);
+        }
+
+        return response()->json(['msg' => 'Erro']);
+
 
     }
 }

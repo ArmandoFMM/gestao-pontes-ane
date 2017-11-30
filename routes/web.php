@@ -29,6 +29,10 @@ Route::post('/validar-ponte', 'PonteController@validarPonte');
 
 Route::get('/inspecoes-history/{id}', 'PonteController@inspecoesByPonte');
 
-Route::get('todas-pontes','PonteController@todasPontes');
+Route::get('/todas-pontes','PonteController@todasPontes');
+
+Route::get('/todos-problemas','ProblemasController@getAllProblemas');
+
+Route::get('/inspecao/{id}','InspecaoController@inspecaoById');
 
 Auth::routes();

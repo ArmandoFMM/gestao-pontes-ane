@@ -12,5 +12,10 @@ class Problema extends Model
         return $this->belongsTo('App\Categoria');
     }
 
+    public function inspecaos(){
+
+        return $this->belongsToMany('App\Inspecao')->withPivot('dimensao','nivel_deterioracao');
+    }
+
     
 }

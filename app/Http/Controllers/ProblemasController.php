@@ -6,6 +6,7 @@ use App\Categoria;
 use App\Problema;
 use App\TipoDefeito;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ProblemasController extends Controller
 {
@@ -88,6 +89,22 @@ class ProblemasController extends Controller
     public function getAllProblemas() {
 
 //        $problemas = Problema::with('categoria')->orderBy('categoria_id')->get();
+
+        $with = Input::get('with');
+
+        if($with){
+            switch ($with){
+                case 'inspecoes': {
+                    $problemas = Problema::with('inspecaos')->get();
+
+                    return response()->json(['problemas' => $problemas->toArray()]);
+
+                }
+
+                default: break;
+                }
+
+        }
 
         $categorias = Categoria::with('problemas')->get();
 
