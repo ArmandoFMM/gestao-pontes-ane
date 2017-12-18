@@ -13,7 +13,7 @@
 
 Route::get('/','HomeController@index');
 
-Route::get('/home', 'HomeController@secure');
+Route::get('/home', 'HomeController@index');
 
 Route::resource('pontes','PonteController');
 

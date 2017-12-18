@@ -38,8 +38,4 @@ class HomeController extends Controller
             'pontes_estado_rotura'
         ));
     }
-
-    public function secure() {
-        return redirect()->secure('/');
-    }
 }
