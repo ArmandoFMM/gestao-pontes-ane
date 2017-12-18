@@ -104,7 +104,9 @@ class PonteController extends Controller
         }
 
 
-        Session::flash('message', 'Ponte Registada com sucesso');
+        Session::flash('message', 'Ponte Registada');
+        Session::flash('alert-type', 'success');
+
         return redirect()->route('pontes.index');
 
 

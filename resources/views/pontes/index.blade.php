@@ -69,7 +69,7 @@
                 <td class="">{{$ponte->nome_ponte}}</td>
                 <td>{{$ponte->ano_construcao}}</td>
                 <td class="">
-                 <img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}" alt="" class="circle">
+                 <img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}" alt="IMAGEM PONTE {{$ponte->nome_ponte}}" class="circle">
                 </td>
                 <td class="">{{$ponte->tipo->designacao_tipo}}</td>
                 <td>{{$ponte->estrada->nome_estrada}}</td>
@@ -86,7 +86,8 @@
                     <!-- Dropdown Structure -->
                     <ul id='dropdown{{$ponte->id}}' class='dropdown-content'>
                         <li><a class="modal-trigger" href="#modal{{$ponte->id}}"><i class="material-icons ver">remove_red_eye</i> Visualizar</a></li>
-                        <li><a href="/inspecoes-history/{{$ponte->id}}"><i class="material-icons">assignment</i> Inspecções</a></li>                        
+                        <li><a href="/inspecoes-history/{{$ponte->id}}"><i class="material-icons">assignment</i> Inspecções</a></li>
+                        <li><a href="{{route('pontes.edit',['id'=>$ponte->id])}}"><i class="material-icons">mode_edit</i> Editar</a></li>
                         <li class="divider"></li>
                         <li><a class="delete-btn" data-id="{{$ponte->id}}" href="#"><i class="material-icons red-text">delete</i> Arquivar</a></li>
                     </ul>
@@ -218,10 +219,6 @@
 
             //$('#modo-lista').insertAfter('#dt-table_length');
         });
-
-        @if(Session::has('message'))
-         Materialize.toast('{{Session::get('message')}}', 4000);
-        @endif
     </script>
 
 @endsection

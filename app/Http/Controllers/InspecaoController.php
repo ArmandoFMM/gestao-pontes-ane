@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\DefeitoGrave;
 use App\Estado;
 use App\Inspecao;
+use App\Notifications\InspecaoAgendada;
 use App\Ponte;
 use App\Problema;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
+use Session;
 use League\Flysystem\Exception;
 
 class InspecaoController extends Controller
@@ -42,11 +45,29 @@ class InspecaoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->request->add(['data' => date("Y-m-d", strtotime(str_replace('/', '-', $request->data)) )]);
 
-        Inspecao::create($request->all());
+        $request->request->add(['data' => date("Y-m-d", strtotime(str_replace('/', '-', $request->data)))]);
+
+        $ponte = Ponte::find($request->ponte_id);
+        $inspecoes = $ponte->inspecaos()->where('data', $request->data)->count();
+//        dd($inspecoes);
+        if($inspecoes > 0){
+
+            Session::flash('message', 'Já existe uma inspecção marcada para a data especificada e para a mesma ponte, selecione outra data por favor!');
+            Session::flash('alert-type', 'warning');
+            return redirect()->back();
+        }
+
+        $inspecao = Inspecao::create($request->all());
+        Session::flash('message', 'Inspecção Agendada');
+        Session::flash('alert-type', 'success');
+
+
+        $inspecao->user->notify(new InspecaoAgendada());
+
 
         return redirect('/inspecoes-history/'.$request->ponte_id);
+
     }
 
     /**
@@ -174,12 +195,24 @@ class InspecaoController extends Controller
 
     public function inspecaoById($id){
 
-        $inspecao = Inspecao::where('id',$id)->with('problemas')->first();
+        $inspecao = Inspecao::where('id',$id)->with('problemas', 'user')->first();
+
+        $date = \DateTime::createFromFormat('d/m/y', ''.$inspecao->data);
+        $date = $date->format('Y-m-d');
+
+
+        $anteriores = Inspecao::where([
+            ['ponte_id',$inspecao->id],
+            ['data','<', $date],
+            ['publicada', true]
+        ])->with('problemas', 'user')->get();
 
         if($inspecao){
-            $ponte = Ponte::where('id',$inspecao->ponte->id)->with('inspecaos')->first();
+            $ponte = Ponte::where('id', $inspecao->ponte->id)->with(['inspecaos'=> function($q) {
+                return $q->where('publicada', true);
+            }, 'estados'])->first();
 
-            return response()->json(['ponte' => $ponte->toArray(), 'inspecao' => $inspecao->toArray()]);
+            return response()->json(['ponte' => $ponte->toArray(), 'inspecao' => $inspecao->toArray(), 'anteriores' => $anteriores->toArray()]);
         }
 
         return response()->json(['msg' => 'Erro']);

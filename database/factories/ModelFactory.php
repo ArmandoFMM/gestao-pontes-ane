@@ -19,6 +19,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->randomElement(['admin@mail.com','admin@b.com','admin@ane.gov.mz','info@ane.gov.mz','ane@mail.com']),
         'password' => $password ?: $password = bcrypt('secret'),
+        'phone_number' => $faker->unique()->phoneNumber,
         'remember_token' => str_random(10),
         'role_id' => $faker->numberBetween(1,3),
         'provincia_id' => $faker->numberBetween(1,2)

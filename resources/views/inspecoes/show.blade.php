@@ -13,7 +13,7 @@
 
 
 @section('content')
-    <h4 class="center-align">Detalhes de Inspecções da ponte</h4>
+    <h4 class="center-align">Inspecção da ponte {{$inspecao->ponte->nome_ponte}} <span class="badge blue left white-text">{{$inspecao->data}}</span></h4>
 
     <div class="card">
         <div class="card-content white-text">
@@ -23,7 +23,6 @@
 
     <div class="divider"></div>
     <div class="section">
-        <h4 class="center">Relatório de inspecção</h4>
         <div id="app">
             <inspecao-report id="{{$inspecao->id}}"></inspecao-report>
         </div>

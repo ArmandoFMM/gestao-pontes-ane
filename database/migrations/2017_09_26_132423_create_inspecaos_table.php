@@ -16,6 +16,7 @@ class CreateInspecaosTable extends Migration
         Schema::create('inspecaos', function (Blueprint $table) {
             $table->increments('id');
             $table->date('data');
+            $table->time('hora')->nullable();
             $table->text('comentario')->nullable();
             $table->boolean('publicada')->default(false);
             $table->boolean('realizada')->default(false);

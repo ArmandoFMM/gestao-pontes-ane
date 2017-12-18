@@ -28,7 +28,7 @@
                   <ul class="collection">
                       @foreach($ponte->inspecoesPassadas as $realizada)
                           <li class="collection-item avatar">
-                              <i class="material-icons circle green">remove_red_eye</i>
+                              <img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}" alt="IMAGEM PONTE {{$ponte->nome_ponte}}" class="circle">
                               <span class="title">{{$realizada->tipo_inspecao->designacao_tipo_inspecao}}</span>
                               <p>{{$realizada->data}} <br>
                                   {{$realizada->user->name}}
@@ -57,7 +57,7 @@
         <ul class="collection">
             @foreach($ponte->inspecoesAgendadas as $agendada)
             <li class="collection-item avatar">
-                <i class="material-icons circle green">event</i>
+                <img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}" alt="IMAGEM PONTE {{$ponte->nome_ponte}}" class="circle">
                 <span class="title">{{$agendada->tipo_inspecao->designacao_tipo_inspecao}}</span>
                 <p>{{$agendada->data}} <br>
                     {{$agendada->user->name}}
@@ -123,5 +123,19 @@
 @endsection
 
 @section('js')
-
+<script>
+    $(document).ready( function () {
+        console.log(new Date());
+        $('.datepicker').pickadate({
+            format: 'dd/mm/yyyy',
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Hoje',
+            clear: 'Limpar',
+            close: 'Ok',
+            closeOnSelect: true, // Close upon selecting a date
+            min:  new Date()
+        });
+    });
+</script>
 @endsection

@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'asitoe@ane.gov.mz',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
+            'phone_number' => '258841640163',
             'role_id' => 1,
             'provincia_id' => 1
         ]);
@@ -26,6 +27,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'cmiguel@ane.gov.mz',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
+            'phone_number' => '258840304463',
             'role_id' => 2,
             'provincia_id' => 1
         ]);
@@ -35,6 +37,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'asasibindy@ane.gov.mz',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
+            'phone_number' => '258849010400',
             'role_id' => 3,
             'provincia_id' => 1
         ]);

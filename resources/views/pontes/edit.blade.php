@@ -111,13 +111,13 @@
                 </div>
                 <div class="input-field col s12 m6">
                     <select name="tipo_obstaculo" required class="validate">
-                            <option value="" disabled selected>Selecione uma opcão</option>
+                            <option disabled selected>Selecione uma opcão</option>
                             @if ($ponte->tipo_obstaculo == 'rio')
                                 <option value="rio" selected>Rio</option>
                                 <option value="corrente">Corrente</option>
                             @else
-                                <option value="corrente" selected>Correnteoption>
-                                 <option value="rio">Rio</option>                             
+                                <option value="corrente" selected>Corrente</option>
+                                <option value="rio">Rio</option>                             
                             @endif 
                            
                             
