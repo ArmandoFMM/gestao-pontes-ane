@@ -295,6 +295,8 @@
     $(document).ready( function () {
         @if(Session::has('login'))
         $('#hack-reload').trigger('click');
+
+        alert('hahha');
         @endif
     })
             @if(Session::has('message'))
