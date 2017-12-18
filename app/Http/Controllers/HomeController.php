@@ -40,6 +40,6 @@ class HomeController extends Controller
     }
 
     public function secure() {
-        return redirect('/',[],[],['secure' => true]);
+        return redirect()->secure('/');
     }
 }
