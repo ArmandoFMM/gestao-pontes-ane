@@ -144,10 +144,12 @@
     <li>
         <div class="divider"></div>
     </li>
-    <li>
-        <a href="/validar-pontes" class="waves-effect black-text"><i class="material-icons">check_circle</i>Validar
+    @can('validar', App\Ponte::class)
+        <li>
+            <a href="/validar-pontes" class="waves-effect black-text"><i class="material-icons">check_circle</i>Validar
             Registos</a>
-    </li>
+        </li>
+    @endcan
     <li>
         <a href="#modal-download-app" class="waves-effect black-text modal-trigger"><i class="material-icons">settings_cell</i>Baixar
             App Móvel</a>
@@ -224,10 +226,12 @@
             <li>
                 <div class="divider"></div>
             </li>
-            <li>
-                <a href="/validar-pontes" class="waves-effect black-text"><i class="material-icons">check_circle</i>Validar
-                    Registos</a>
-            </li>
+            @can('validar', App\Ponte::class)
+                <li>
+                    <a href="/validar-pontes" class="waves-effect black-text"><i class="material-icons">check_circle</i>Validar
+                        Registos</a>
+                </li>
+            @endcan
             <li>
                 <a href="#modal-download-app" class="waves-effect black-text modal-trigger"><i class="material-icons">settings_cell</i>Baixar
                     App Móvel</a>

@@ -185,7 +185,7 @@ class PonteController extends Controller
     {
 
         $pontes = Ponte::with(['tipo','distrito.provincia','estrada','estados'])->where('visivel', true)->get();
-        return response()->json($pontes->toArray());
+        return response()->json(['pontes' => $pontes->toArray()]);
     }
 
 

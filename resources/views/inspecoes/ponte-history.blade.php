@@ -22,9 +22,7 @@
           </div>
           @else
           <div>
-
               <div class="col s12">
-
                   <ul class="collection">
                       @foreach($ponte->inspecoesPassadas as $realizada)
                           <li class="collection-item avatar">
@@ -70,7 +68,7 @@
     </div>
 @endif
 
-
+@can('agendar', App\Inspecao::class)
     <div class="fixed-action-btn horizontal">
         <a class="btn-floating btn-large teal">
             <i class="large material-icons">add</i>
@@ -79,8 +77,10 @@
             <li><a class="btn-floating teal tooltipped modal-trigger" href="#modal1" data-position="top" data-delay="50" data-tooltip="Agendar Inspecção"><i class="material-icons">event</i></a></li>
             <li><a class="btn-floating teal darken-1 tooltipped" data-position="top" data-delay="50" data-tooltip="Registar Inspecção"><i class="material-icons">add</i></a></li>
         </ul>
-  </div>
-  
+    </div>
+    @endcan
+
+@can('agendar', App\Inspecao::class)
   <div id="modal1" class="modal">
         <div class="modal-content">
                         <form id="form-agendar" name="form-agendar" method="post" action="{{route('inspecoes.store')}}">
@@ -119,6 +119,7 @@
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
         </div>
     </div>
+    @endcan
 
 @endsection
 

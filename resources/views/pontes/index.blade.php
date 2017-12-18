@@ -69,7 +69,7 @@
                 <td class="">{{$ponte->nome_ponte}}</td>
                 <td>{{$ponte->ano_construcao}}</td>
                 <td class="">
-                 <img src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}" alt="IMAGEM PONTE {{$ponte->nome_ponte}}" class="circle">
+                 <img src="https://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}" alt="IMAGEM DA PONTE {{$ponte->nome_ponte}}" class="circle">
                 </td>
                 <td class="">{{$ponte->tipo->designacao_tipo}}</td>
                 <td>{{$ponte->estrada->nome_estrada}}</td>
@@ -89,7 +89,10 @@
                         <li><a href="/inspecoes-history/{{$ponte->id}}"><i class="material-icons">assignment</i> Inspecções</a></li>
                         <li><a href="{{route('pontes.edit',['id'=>$ponte->id])}}"><i class="material-icons">mode_edit</i> Editar</a></li>
                         <li class="divider"></li>
-                        <li><a class="delete-btn" data-id="{{$ponte->id}}" href="#"><i class="material-icons red-text">delete</i> Arquivar</a></li>
+                    @can('delete', App\Ponte::class)
+                        <!-- The Current User Can Delete Pontes -->
+                            <li><a class="delete-btn" data-id="{{$ponte->id}}" href="#"><i class="material-icons red-text">delete</i> Arquivar</a></li>
+                        @endcan
                     </ul>
                 </td>
             </tr>
@@ -105,7 +108,7 @@
                 <div class="card small z-depth-5">
                     <div class="card-image waves-effect waves-block waves-light">
                     @if($ponte->imagem)
-                    <img class="activator" src="http://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}">
+                    <img class="activator" src="https://res.cloudinary.com/armandofm/image/upload/pontes-img/{{$ponte->id}}">
                         @else
                             <img class="activator" src="/img/no-image.jpg">
                         @endif

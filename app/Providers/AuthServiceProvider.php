@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Inspecao;
+use App\Policies\InspecaoPolicy;
+use App\Ponte;
 use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\Gate;
+use App\Policies\PontePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -15,6 +19,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        Ponte::class => PontePolicy::class,
+        Inspecao::class => InspecaoPolicy::class,
+
     ];
 
     /**
@@ -26,6 +33,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         Passport::routes();
+
+        Gate::define('validate-pontes', function ($user) {
+            return $user->role->nome_role === 'Director' || $user->role->nome_role === 'Administrador';
+        });
 
         //
     }

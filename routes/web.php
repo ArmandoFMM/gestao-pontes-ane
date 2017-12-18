@@ -15,6 +15,8 @@ Route::get('/','HomeController@index');
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/unautorized', 'HomeController@unautorized');
+
 Route::resource('pontes','PonteController');
 
 Route::resource('inspecoes','InspecaoController');
@@ -23,7 +25,7 @@ Route::resource('estados','EstadosController');
 
 Route::get('/hidden-pontes','PonteController@hiddenPontes');
 
-Route::get('/validar-pontes', 'PonteController@validarPontes');
+Route::get('/validar-pontes', 'PonteController@validarPontes')->middleware('can:validar,App\Ponte');;
 
 Route::post('/validar-ponte', 'PonteController@validarPonte');
 
