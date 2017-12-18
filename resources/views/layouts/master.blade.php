@@ -158,7 +158,7 @@
 <div class="navbar-fixed">
     <nav class="nav  grey darken-4">
         <div class="nav-wrapper">
-            <a id="hack-reload" href="{{url('/home')}}" class="brand-logo">
+            <a href="{{url('/home')}}" class="brand-logo">
                 <img class="responsive-img circle" src="/img/logo-ane.png">
             </a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -292,13 +292,6 @@
 <script type="text/javascript" src="/js/toastr.min.js"></script>
 -->
 <script>
-    $(document).ready( function () {
-        @if(Session::has('login'))
-        $('#hack-reload').trigger('click');
-
-        alert('hahha');
-        @endif
-    })
             @if(Session::has('message'))
     var type = "{{ Session::get('alert-type', 'info') }}";
     switch (type) {
