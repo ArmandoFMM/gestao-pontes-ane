@@ -123,7 +123,7 @@
             </div>
         </nav>
     </li>
-    <li><a id="hack-reload" href="{{url('/home')}}" class="waves-effect black-text"><i class="material-icons">home</i>Inicio</a></li>
+    <li><a href="{{url('/home')}}" class="waves-effect black-text"><i class="material-icons">home</i>Inicio</a></li>
     <li>
         <div class="divider"></div>
     </li>
@@ -158,7 +158,7 @@
 <div class="navbar-fixed">
     <nav class="nav  grey darken-4">
         <div class="nav-wrapper">
-            <a href="{{url('/home')}}" class="brand-logo">
+            <a id="hack-reload" href="{{url('/home')}}" class="brand-logo">
                 <img class="responsive-img circle" src="/img/logo-ane.png">
             </a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
