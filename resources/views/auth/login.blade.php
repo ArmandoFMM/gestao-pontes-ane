@@ -12,7 +12,7 @@ Login
               <span class="card-title center-align">Login</span>
               
               
-              <form class="form-horizontal" role="form" method="POST" action="{{ url('/login', true) }}">
+              <form class="form-horizontal" role="form" method="POST" action="{{ url('/login',[],['secure' => true]) }}">
                         {{ csrf_field() }}
 
                         <div class="row">
