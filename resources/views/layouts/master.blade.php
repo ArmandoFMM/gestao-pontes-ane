@@ -123,7 +123,7 @@
             </div>
         </nav>
     </li>
-    <li><a href="{{url('/home')}}" class="waves-effect black-text"><i class="material-icons">home</i>Inicio</a></li>
+    <li><a id="hack-reload" href="{{url('/home')}}" class="waves-effect black-text"><i class="material-icons">home</i>Inicio</a></li>
     <li>
         <div class="divider"></div>
     </li>
@@ -292,6 +292,11 @@
 <script type="text/javascript" src="/js/toastr.min.js"></script>
 -->
 <script>
+    $(document).ready( function () {
+        @if(Session::has('login'))
+        $('#hack-reload').trigger('click');
+        @endif
+    })
             @if(Session::has('message'))
     var type = "{{ Session::get('alert-type', 'info') }}";
     switch (type) {
