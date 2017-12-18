@@ -26,7 +26,10 @@ class LoginController extends Controller
      * @var string
      */
 
-    protected $redirectTo = 'https://sgp-ane.herokuapp.com/home';
+    protected function redirectTo()
+    {
+        return url('/home');
+    }
 
     /**
      * Create a new controller instance.
